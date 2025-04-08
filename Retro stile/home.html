@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pip-Boy UI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #081c0e;
+            color: #33ff33;
+            font-family: 'VT323', monospace;
+            text-shadow: 0 0 10px #33ff33;
+        }
+
+        .retro-container {
+            border: 3px solid #33ff33;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        header,
+        footer {
+            text-align: center;
+        }
+
+        nav {
+            position: absolute;
+            top: 32px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        nav a {
+            color: #33ff33;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 5px 10px;
+            border: 1px dashed #33ff33;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content-section {
+            display: none;
+            /* Nasconde le sezioni di default */
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border: 1px dashed #33ff33;
+            margin-top: 10px;
+        }
+
+        .active {
+            display: block;
+            /* Mostra solo la sezione attiva */
+        }
+
+        figure img {
+            border: 1px solid #33ff33;
+            filter: grayscale(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="retro-container">
+        <header>
+            <h1>Pip-Boy UI</h1>
+        </header>
+        <nav>
+            <a onclick="showScreen('screen-1')">Screen 1</a>
+            <a onclick="showScreen('screen-2')">Screen 2</a>
+        </nav>
+        <main>
+            <section id="screen-1" class="content-section">
+                <article>
+                    <header>
+                        <h2>Screen 1</h2>
+                    </header>
+                    <div>
+                        HP: <span style="color: red;">10/100</span>
+                    </div>
+                    <figure>
+                        <img src="url" alt="Pip-Boy Image">
+                    </figure>
+                </article>
+            </section>
+
+            <section id="screen-2" class="content-section">
+                <article>
+                    <header>
+                        <h2>Screen 2</h2>
+                    </header>
+                    <div>
+                        HP: 100/100
+                    </div>
+                    <figure>
+                        <img src="/img/thumbup.png" alt="Pip-Boy Image">
+                    </figure>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>🔋 Vault-Tec Approved Design © Marco Corradini</p>
+        </footer>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            // Nasconde tutte le sezioni
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostra solo la sezione selezionata
+            const selectedSection = document.getElementById(screenId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

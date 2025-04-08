@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corradini Marco - Fullstack Developer</title>
+    <style>
+        * {
+            margin: auto;
+            padding: auto;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            color: goldenrod;
+            line-height: 1.6;
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .Header-menu {
+            position: fixed;
+            top: 0px; /* Nasconde la navbar fuori dalla viewport */
+            width: 100%;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            padding: 1rem;
+            background: #3b3c5e;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out; /* Transizione fluida per il movimento */
+        }
+
+
+        header {
+            font-size: 3rem;
+            margin-bottom: 300px;
+            color: #00ffff;
+            text-align: center;
+            text-shadow: #ff0035 3px 3px;
+        }
+
+        section {
+            padding: 200px 200px 200px 200px;
+            margin-bottom: 10rem;
+            text-align: center;
+            background-size: cover;
+            background-position: calc(100px - 100px);
+        }
+
+        .section-wrapper {
+            max-width: 800px;
+            max-height: 800px;
+            margin: auto auto;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #3b3c5e;
+            color: #00ffff;
+            padding: 1rem;
+            text-shadow: #ff0035 2px 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 1rem;
+            background-color: #222;
+        }
+
+        ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #9c1f1f;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #3b3c5e;
+            color: #ffffff;
+        }
+
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: #0077cc;
+            text-decoration: underline;
+        }
+
+        a:hover {
+
+            color: goldenrod;
+            text-decoration: underline;
+        }
+
+        .su-di-me p {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="Header-menu" id="navbar">
+        <img id="logo" src="/CV/img/bg.jpg" style="width: 100px; height: 100px; border-radius: 50%;">
+        <nav>
+            <ul>
+                <li>
+                    <a href="\\wsl.localhost\Ubuntu\home\marco\projects\HTML\CV\Pages\index.html">Home</a>
+                    <a href="\\wsl.localhost\Ubuntu\home\marco\projects\HTML\CV\Pages\p.html">Altro</a>
+                    <a href="\\wsl.localhost\Ubuntu\home\marco\projects\HTML\CV\Pages\p.html">Altro</a>
+                    <a href="\\wsl.localhost\Ubuntu\home\marco\projects\HTML\CV\Pages\p.html">Altro</a>
+                    <a href="\\wsl.localhost\Ubuntu\home\marco\projects\HTML\CV\Pages\p.html">Altro</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+    <header>
+        <h1 style="padding: 200px;">Corradini Marco<p style="font-size: rem;">Fullstack Developer</p>
+        </h1>
+    </header>
+
+    <section class="su-di-me" style="background-image: url('/CV/img/onme.jpg'); background-attachment: fixed;">
+        <div class="section-wrapper">
+            <div class="section-header">
+                <h3>Su di me</h3>
+            </div>
+            <ul>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                dolore eu
+                fugiat nulla pariatur."</ul>
+        </div>
+    </section>
+
+    <section style="background-image: url('/CV/img/istr.jpg'); background-attachment: fixed;">
+        <div class="section-wrapper">
+            <div class="section-header">
+                <h3>Istruzione</h3>
+            </div>
+            <ul>
+                <li>ITS Incom corso Web Developer</li>
+                <li>Diploma superiore Perito Informatico</li>
+            </ul>
+        </div>
+    </section>
+
+    <section style="background-image: url('/CV/img/work.jpg'); background-attachment: fixed;">
+        <div class="section-wrapper">
+            <div class="section-header">
+                <h3>Lavoro</h3>
+            </div>
+            <ul>
+                <li>IT & OnSite Manager @ <a href="https://www.elmec.com/">Elmec informatica S.P.A.</a></li>
+                <li>Full stack developer @ <a href="https://www.autosoft.it/">SIDA Autosoft multimedia</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>Email: <a href="mailto:marco.corradini@itsincom.it">marco.corradini@itsincom.it</a></p>
+    </footer>
+    <script>
+        let lastScrollY = window.pageYOffset; // Tieni traccia dell'ultima posizione di scroll
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.pageYOffset;
+
+            if (lastScrollY > currentScrollY) {
+                // Sto scrollando verso l'alto: mostra la navbar
+                navbar.style.top = "0px";
+            } else {
+                // Sto scrollando verso il basso: nascondi la navbar
+                navbar.style.top = "-200px";
+            }
+
+            lastScrollY = currentScrollY; // Aggiorna la posizione dello scroll
+        });
+    </script>
+
+</body>
+
+</html>

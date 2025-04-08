@@ -1,0 +1,87 @@
+:root {
+    --primary-color: #ffd52c;
+    --secondary-color: #ff5c00;
+    --tertiary-color: #c72d04;
+    --background-color: #111;
+    scrollbar-color: var(--primary-color) var(--secondary-color);
+    font-size: clamp(18px, 3vw, 30px);
+    font-family: 'VT323', monospace;
+    font-weight: 400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: 100vh;
+    background-color: var(--background-color);
+    cursor: var(--primary-color)0 0, auto;
+    color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+div.retro-container {
+    inline-size: 90vw;
+    block-size: 90vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+    padding: 0.5rem;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    text-shadow: 0 0 0.5rem;
+    mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+    mask-size: 100% 2rem;
+}
+
+main {
+    overflow: hidden;
+}
+
+section {
+    block-size: 100%;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+@keyframes crtAnimation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 10000%;
+    }
+}
+
+.old-crt-monitor {
+    box-shadow: inset 0px 0px 2rem;
+    background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 1000%);
+    animation: crtAnimation 100s linear infinite;
+    background-size: 100% 80%;
+}
+
+@keyframes blink-bg {
+    0%, 60% {
+        text-shadow: 0 0 10.5rem;
+        color: var(--tertiary-color);
+    }
+    70%, 100% {
+        text-shadow: 0 0 20.5rem;
+        color: var(--primary-color);
+    }
+}
+
+.alert {
+    animation: blink-bg 1s ease-out infinite;
+}
+
