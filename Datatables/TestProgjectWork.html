@@ -149,6 +149,59 @@
         <p>&copy; 2025 HR Manager Portal - Azienda XYZ</p>
     </footer>
 
+    <script>
+        // Quando il documento è pronto, questa funzione viene eseguita.
+        // Analizza la query string per determinare la pagina e la categoria da visualizzare.
+        $(document).ready(function () {
+            const params = new URLSearchParams(window.location.search); // Ottiene i parametri dalla query string.
+            const page = params.get("page") || "home"; // Determina la pagina da caricare (predefinito: "home").
+            const categoria = params.get("categoria"); // Determina la categoria da filtrare (opzionale).
+
+            loadPage(page, categoria); // Carica la pagina appropriata con i parametri.
+        });
+
+        // Funzione che gestisce il caricamento dinamico della pagina.
+        function loadPage(page, categoria) {
+            let content = $("#content"); // Seleziona l'elemento HTML dove verrà caricato il contenuto.
+            if (page === "home") {
+                // Se la pagina è "home", carica contenuto statico.
+                content.html(`
+                    <h1>Benvenuti nel portale HR</h1>
+                    <p>La nostra azienda si impegna a offrire un ambiente lavorativo dinamico...</p>
+                    <p>...</p>
+                `);
+            } else if (page === "invia_lettera") {
+                // Se la pagina è "invia_lettera", mostra un form per inviare una lettera di richiamo.
+                content.html(`
+                    <h2>Invia una Lettera di Richiamo</h2>
+                    <form id="warning-form">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cognome" class="form-label">Cognome</label>
+                            <input type="text" class="form-control" id="cognome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Indirizzo Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="testo" class="form-label">Testo della Lettera</label>
+                            <textarea class="form-control" id="testo" rows="4" required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="inviaLettera()">Invia Lettera di Richiamo</button>
+                    </form>
+                `);
+            } else if (page === "dipendenti") {
+                // Se la pagina è "dipendenti", chiama la funzione per ottenere i dati da un'API.
+                fetchDipendenti(categoria);
+            }
+        }
+        
+    </script>
+
 </body>
 
 </html>
