@@ -199,7 +199,23 @@
                 fetchDipendenti(categoria);
             }
         }
-        
+
+        // Funzione che gestisce l'invio della lettera di richiamo.
+        function inviaLettera() {
+            const nome = $("#nome").val().trim(); // Recupera il valore del campo "nome".
+            const cognome = $("#cognome").val().trim(); // Recupera il valore del campo "cognome".
+            const email = $("#email").val().trim(); // Recupera il valore del campo "email".
+            const testo = $("#testo").val().trim(); // Recupera il valore del campo "testo".
+
+            // Controlla se tutti i campi sono compilati.
+            if (nome && cognome && email && testo) {
+                alert("La lettera di richiamo è stata inviata con successo al dipendente."); // Mostra un messaggio di successo.
+            } else {
+                alert("Per favore, compila tutti i campi."); // Mostra un avviso per il mancato completamento.
+            }
+        }
+
+
     </script>
 
 </body>
