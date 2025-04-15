@@ -119,6 +119,12 @@
             color: #ffffff;
             /* Testo bianco */
         }
+
+        .navbar-collapse {
+            flex-basis: 100%;
+            flex-grow: 0.1;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -126,7 +132,10 @@
     <!-- Header con menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">HR Manager</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="/media/logo.png" alt="Logo" style="height: 150px; margin-right: 10px;">
+                HR Manager
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
