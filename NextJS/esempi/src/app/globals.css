@@ -1,5 +1,3 @@
-/* globals.css */
-
 /* Importa le direttive di Tailwind CSS */
 @tailwind base;
 @tailwind components;
@@ -7,28 +5,70 @@
 
 /* Dichiarazioni delle variabili CSS globali */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #000000; /* Sfondo nero */
+  --foreground: #ededed; /* Testo chiaro */
 }
 
 /* Aggiungi le variabili a un tema inline per un uso coerente */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, Helvetica, sans-serif;
 }
 
-/* Definisci il corpo con variabili CSS per il tema */
+/* Stile globale per il corpo */
 body {
-  background: var(--background);
+  background: var(--background); /* Sfondo nero */
+  color: var(--foreground); /* Testo chiaro */
+  font-family: var(--font-sans);
+}
+
+/* Stile della componente app */
+.app {
+  background-color: var(--background);
+  padding: 20px;
+}
+
+/* Stili della sezione header */
+.header-container {
+  padding: 5px; /* Ridotto rispetto ai 10px precedenti */
+  border: 1px solid var(--foreground);
+  margin-bottom: 10px;
+  border-radius: 8px;
+  width: 80%; /* Modifica la larghezza in base alle tue esigenze */
+  max-width: 300px; /* Limita la larghezza massima */
+}
+
+.header-title {
+  font-size: 18px;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header-age {
+  font-size: 14px;
+  color: var(--foreground);
+}
+
+.btn {
+  margin-right: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: var(--foreground);
+  background: none;
+  border: 1px solid var(--foreground);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.increment-btn {
+  margin-left: 5px;
+}
+
+.decrement-btn {
+  margin-left: 5px;
 }
