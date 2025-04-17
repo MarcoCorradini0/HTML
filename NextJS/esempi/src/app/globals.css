@@ -5,8 +5,10 @@
 
 /* Dichiarazioni delle variabili CSS globali */
 :root {
-  --background: #000000; /* Sfondo nero */
-  --foreground: #ededed; /* Testo chiaro */
+  --background: #000000;
+  /* Sfondo nero */
+  --foreground: #ededed;
+  /* Testo chiaro */
 }
 
 /* Aggiungi le variabili a un tema inline per un uso coerente */
@@ -18,25 +20,42 @@
 
 /* Stile globale per il corpo */
 body {
-  background: var(--background); /* Sfondo nero */
-  color: var(--foreground); /* Testo chiaro */
+  background: var(--background);
+  /* Sfondo nero */
+  color: var(--foreground);
+  /* Testo chiaro */
   font-family: var(--font-sans);
+}
+
+/* Importa il font Lusitana da Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lusitana:wght@400;700&display=swap');
+
+/* Utilizza il font Lusitana nel tema globale */
+body {
+  font-family: 'Lusitana', serif;
+  /* Sostituisci Arial con Lusitana */
+  background: var(--background);
+  color: var(--foreground);
 }
 
 /* Stile della componente app */
 .app {
+  display: flex;
   background-color: var(--background);
   padding: 20px;
 }
 
 /* Stili della sezione header */
 .header-container {
-  padding: 5px; /* Ridotto rispetto ai 10px precedenti */
+  padding: 5px;
+  /* Ridotto rispetto ai 10px precedenti */
   border: 1px solid var(--foreground);
   margin-bottom: 10px;
   border-radius: 8px;
-  width: 80%; /* Modifica la larghezza in base alle tue esigenze */
-  max-width: 300px; /* Limita la larghezza massima */
+  width: 80%;
+  /* Modifica la larghezza in base alle tue esigenze */
+  max-width: 300px;
+  /* Limita la larghezza massima */
 }
 
 .header-title {
@@ -71,4 +90,52 @@ body {
 
 .decrement-btn {
   margin-left: 5px;
+}
+
+/* Posizionamento del wrapper del messaggio di benvenuto */
+.hero-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Pieno schermo */
+  animation: fadeIn 1.5s ease-in-out;
+  /* Animazione */
+}
+
+/* Stile del messaggio di benvenuto */
+.hero-wrapper .hero-message {
+  font-size: 2rem;
+  /* font lusitana */
+  font-family: 'Lusitana', serif;
+  font-weight: bold;
+  color: var(--foreground);
+  /* Testo chiaro */
+}
+
+/* Animazione di fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* Inizio trasparente */
+    transform: translateY(-20px);
+    /* Posizione iniziale */
+  }
+
+  to {
+    opacity: 1;
+    /* Fine completamente visibile */
+    transform: translateY(0);
+    /* Posizione finale */
+  }
+}
+
+.header-container.jumping {
+  animation: jump 0.5s ease-in-out;
+}
+
+@keyframes jump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }

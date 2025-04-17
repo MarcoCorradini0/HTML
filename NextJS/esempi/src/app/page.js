@@ -22,13 +22,21 @@ export default function Home() {
     { name: "Peach", age: 28 },
     { name: "Toad", age: 25 },
     { name: "Yoshi", age: 30 },
+    { name: "Super Mario", age: 40, isJumping: false }, // Aggiunto Super Mario
   ]);
 
-  function Header({ title, counter, pos }) {
+  function Header({ title, counter, pos, isJumping }) {
     function handleClick(pos, action) {
       const copyPeople = [...people];
       if (action === "I") {
         copyPeople[pos].age++;
+        if (copyPeople[pos].name === "Super Mario") {
+          copyPeople[pos].isJumping = true; // Super Mario salta
+          setTimeout(() => {
+            copyPeople[pos].isJumping = false; // Torna in piedi
+            setPeople(copyPeople);
+          }, 500); // Durata del salto
+        }
       } else if (action === "D") {
         copyPeople[pos].age--;
       }
@@ -36,7 +44,7 @@ export default function Home() {
     }
 
     return (
-      <div className="header-container">
+      <div className={`header-container ${isJumping ? "jumping" : ""}`}>
         <h5 className="header-title">{title}</h5>
         {counter <= 28 && <h6 className="header-age">Ha {counter} anni</h6>}
         <button
@@ -51,6 +59,11 @@ export default function Home() {
         >
           DECREMENTA
         </button>
+        {title === "Super Mario" && (
+          <div className="super-mario-animation">
+            {isJumping ? "Super Mario sta saltando!" : "Super Mario è in piedi!"}
+          </div>
+        )}
       </div>
     );
   }
@@ -64,7 +77,9 @@ export default function Home() {
       </Head>
       <div className="app">
         {showWelcome ? (
-          <HeroMessage message="Benvenuto nel mio progetto Next.js!" />
+          <div className="hero-wrapper">
+            <HeroMessage message="Benvenuto nel mio progetto Next.js!" />
+          </div>
         ) : (
           people.map((person, index) => (
             <Header
@@ -72,6 +87,7 @@ export default function Home() {
               title={person.name}
               counter={person.age}
               pos={index}
+              isJumping={person.isJumping}
             />
           ))
         )}
