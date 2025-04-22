@@ -305,7 +305,7 @@
         // Funzione che recupera e filtra i dati dei dipendenti da un'API.
         async function fetchDipendenti(categoria) {
             const content = $("#content"); // Seleziona l'elemento HTML dove verrà caricato il contenuto.
-            const url = "http://its.digitalminds.cloud/Dipendenti.json"; // URL dell'API contenente i dati.
+            const url = "https://sample-apis-sigma.vercel.app/api/dipendenti"; // URL dell'API contenente i dati.
 
             try {
                 const response = await fetch(url); // Effettua la richiesta GET all'API.
