@@ -1,4 +1,4 @@
-const API_PROXY = '/api/proxy?path=';
+const API_PROXY = '/standup/api/proxy?path=';
 
 const welcomeScreen = document.getElementById('welcome-screen');
 const dashboardScreen = document.getElementById('dashboard-screen');
