@@ -41,7 +41,7 @@ loginBtn.addEventListener('click', async () => {
 startStandupBtn.addEventListener('click', async () => {
   switchScreen(standupScreen);
   const key = localStorage.getItem('apiKey');
-  const res = await fetch(`/api/proxy?path=api/devs`, {
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/devs`, {
     headers: { 'x-api-key': key }
   });
   const devs = await res.json();
@@ -112,7 +112,7 @@ saveMeetingBtn.addEventListener('click', async () => {
     standUpsInfo
   };
   
-  const res = await fetch(`/api/proxy?path=api/stand-up`, {
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-up`, {
     method: 'POST',
     headers: {
       'x-api-key': apiKey,
@@ -132,7 +132,7 @@ viewHistoryBtn.addEventListener('click', async () => {
   switchScreen(historyScreen);
   historyList.innerHTML = '';
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`/api/proxy?path=api/stand-ups`, {
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-ups`, {
     headers: { 'x-api-key': apiKey }
   });
   const history = await res.json();
@@ -151,7 +151,7 @@ backToDashboardBtn.addEventListener('click', () => {
 
 async function showMeetingDetail(id) {
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`/api/proxy?path=api/stand-up&id=${id}`, {
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-up&id=${id}`, {
     headers: { 'x-api-key': apiKey }
   });
   const data = await res.json();
