@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StandUpParo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dark-theme">
+  <section id="welcome-screen" class="screen">
+    <h1>🚀 Benvenuto in StandUpParo</h1>
+    <input type="text" id="api-key" placeholder="Inserisci la tua API Key">
+    <button id="login-btn">Accedi</button>
+  </section>
+
+  <section id="dashboard-screen" class="screen hidden">
+    <h2 id="company-name"></h2>
+    <button id="start-standup">Inizia Stand-Up</button>
+    <button id="view-history">Storico Meeting</button>
+  </section>
+
+  <section id="standup-screen" class="screen hidden">
+    <h2>🗓️ <span id="date"></span> | Durata: <span id="duration">00:00</span></h2>
+    <table>
+      <thead>
+        <tr><th>Sviluppatore</th><th>Timer</th><th>Note</th></tr>
+      </thead>
+      <tbody id="dev-table-body"></tbody>
+    </table>
+    <button id="save-meeting">Salva Stand-Up</button>
+  </section>
+
+  <section id="history-screen" class="screen hidden">
+    <h2>📚 Storico Meeting</h2>
+    <ul id="history-list"></ul>
+    <canvas id="chart" class="hidden"></canvas>
+    <button id="back-to-dashboard">⬅️ Torna alla Dashboard</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
