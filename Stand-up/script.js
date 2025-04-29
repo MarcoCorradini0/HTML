@@ -25,7 +25,7 @@ function switchScreen(screen) {
 
 loginBtn.addEventListener('click', async () => {
   const key = apiKeyInput.value;
-  const res = await fetch(`/api/proxy?path=api/company-name`, {
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
     headers: { 'Authorization': key },
   });  
   if (res.ok) {
