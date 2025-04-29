@@ -1,4 +1,4 @@
-const API_BASE = 'https://standupparo-apis.vercel.app';
+const API_PROXY = '/api/proxy?path=';
 
 const welcomeScreen = document.getElementById('welcome-screen');
 const dashboardScreen = document.getElementById('dashboard-screen');
@@ -25,7 +25,7 @@ function switchScreen(screen) {
 
 loginBtn.addEventListener('click', async () => {
   const key = apiKeyInput.value;
-  const res = await fetch(`${API_BASE}/api/company-name`, {
+  const res = await fetch(`${API_PROXY}api/company-name`, {
     headers: { 'Authorization': key }
   });
   if (res.ok) {
@@ -41,7 +41,7 @@ loginBtn.addEventListener('click', async () => {
 startStandupBtn.addEventListener('click', async () => {
   switchScreen(standupScreen);
   const key = localStorage.getItem('apiKey');
-  const res = await fetch(`${API_BASE}/api/devs`, { headers: { 'Authorization': key }});
+  const res = await fetch(`${API_PROXY}api/devs`, { headers: { 'Authorization': key }});
   const devs = await res.json();
   dateDisplay.textContent = new Date().toLocaleDateString();
   timer = 0;
@@ -107,7 +107,7 @@ saveMeetingBtn.addEventListener('click', async () => {
     duration: formatTime(timer),
     devs
   };
-  const res = await fetch(`${API_BASE}/api/stand-ups`, {
+  const res = await fetch(`${API_PROXY}api/stand-ups`, {
     method: 'POST',
     headers: {
       'Authorization': apiKey,
@@ -127,7 +127,7 @@ viewHistoryBtn.addEventListener('click', async () => {
   switchScreen(historyScreen);
   historyList.innerHTML = '';
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`${API_BASE}/api/stand-ups`, {
+  const res = await fetch(`${API_PROXY}api/stand-ups`, {
     headers: { 'Authorization': apiKey }
   });
   const history = await res.json();
@@ -146,7 +146,7 @@ backToDashboardBtn.addEventListener('click', () => {
 
 async function showMeetingDetail(id) {
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`${API_BASE}/api/stand-ups/${id}`, {
+  const res = await fetch(`${API_PROXY}api/stand-ups/${id}`, {
     headers: { 'Authorization': apiKey }
   });
   const data = await res.json();
