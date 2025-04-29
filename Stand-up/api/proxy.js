@@ -1,16 +1,21 @@
 export default async function handler(req, res) {
   const { path } = req.query;
+  if (!path) return res.status(400).json({ error: 'Path mancante' });
+
   const apiUrl = `https://standupparo-apis.vercel.app/${path}`;
+  
   const headers = {
     ...req.headers,
-    host: undefined
+    host: undefined,
   };
+
   try {
     const response = await fetch(apiUrl, {
       method: req.method,
       headers,
       body: req.method !== 'GET' ? JSON.stringify(req.body) : undefined,
     });
+
     const data = await response.json();
     res.status(response.status).json(data);
   } catch (error) {
