@@ -110,7 +110,7 @@ saveMeetingBtn.addEventListener('click', async () => {
   const res = await fetch(`${API_PROXY}api/stand-ups`, {
     method: 'POST',
     headers: {
-      'Authorization': apiKey,
+      'x-api-key': apiKey,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(payload)
@@ -127,8 +127,8 @@ viewHistoryBtn.addEventListener('click', async () => {
   switchScreen(historyScreen);
   historyList.innerHTML = '';
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`/api/proxy?path=api/company-name`, {
-    headers: { 'Authorization': key },
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
+    headers: { 'x-api-key': key },
   });  
   const history = await res.json();
   history.forEach(meeting => {
@@ -146,8 +146,8 @@ backToDashboardBtn.addEventListener('click', () => {
 
 async function showMeetingDetail(id) {
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`/api/proxy?path=api/company-name`, {
-    headers: { 'Authorization': key },
+  const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
+    headers: { 'x-api-key': key },
   });  
   const data = await res.json();
   const names = data.devs.map(dev => dev.name);
