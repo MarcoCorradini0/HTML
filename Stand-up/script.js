@@ -25,9 +25,9 @@ function switchScreen(screen) {
 
 loginBtn.addEventListener('click', async () => {
   const key = apiKeyInput.value;
-  const res = await fetch(`${API_PROXY}api/company-name`, {
-    headers: { 'Authorization': key }
-  });
+  const res = await fetch(`/api/proxy?path=api/company-name`, {
+    headers: { 'Authorization': key },
+  });  
   if (res.ok) {
     const data = await res.json();
     localStorage.setItem('apiKey', key);
@@ -127,9 +127,9 @@ viewHistoryBtn.addEventListener('click', async () => {
   switchScreen(historyScreen);
   historyList.innerHTML = '';
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`${API_PROXY}api/stand-ups`, {
-    headers: { 'Authorization': apiKey }
-  });
+  const res = await fetch(`/api/proxy?path=api/company-name`, {
+    headers: { 'Authorization': key },
+  });  
   const history = await res.json();
   history.forEach(meeting => {
     const li = document.createElement('li');
@@ -146,9 +146,9 @@ backToDashboardBtn.addEventListener('click', () => {
 
 async function showMeetingDetail(id) {
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`${API_PROXY}api/stand-ups/${id}`, {
-    headers: { 'Authorization': apiKey }
-  });
+  const res = await fetch(`/api/proxy?path=api/company-name`, {
+    headers: { 'Authorization': key },
+  });  
   const data = await res.json();
   const names = data.devs.map(dev => dev.name);
   const durations = data.devs.map(dev => {

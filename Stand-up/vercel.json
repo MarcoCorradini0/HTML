@@ -3,13 +3,6 @@
   "routes": [
     {
       "src": "/api/proxy",
-      "methods": ["GET", "POST"],
-      "headers": {
-        "cache-control": "no-cache"
-      }
-    },
-    {
-      "src": "/api/proxy",
       "dest": "/api/proxy.js"
     },
     {

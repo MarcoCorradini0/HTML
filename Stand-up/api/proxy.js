@@ -1,10 +1,12 @@
 export default async function handler(req, res) {
   const { path } = req.query;
+  if (!path) return res.status(400).json({ error: 'Path mancante' });
 
   const apiUrl = `https://standupparo-apis.vercel.app/${path}`;
+  
   const headers = {
-    Authorization: req.headers.authorization || '',
-    'Content-Type': 'application/json'
+    ...req.headers,
+    host: undefined,
   };
 
   try {
