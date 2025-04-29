@@ -111,7 +111,7 @@ saveMeetingBtn.addEventListener('click', async () => {
     durationMins: timer / 60, // Convert seconds to minutes
     standUpsInfo
   };
-  
+  console.log(payload);
   const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-up`, {
     method: 'POST',
     headers: {
@@ -120,11 +120,11 @@ saveMeetingBtn.addEventListener('click', async () => {
     },
     body: JSON.stringify(payload)
   });
-  if (res.ok) {
-    alert("Stand-Up salvato con successo!");
-    switchScreen(dashboardScreen);
-  } else {
-    alert("Errore nel salvataggio.");
+
+  if (!res.ok) {
+    const errorData = await res.json();
+    console.error('Error response:', errorData);
+    alert("Errore nel salvataggio: " + errorData.error);
   }
 });
 
