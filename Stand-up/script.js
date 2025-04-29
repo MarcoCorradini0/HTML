@@ -1,4 +1,4 @@
-const API_PROXY = '/standup/api/proxy?path=';
+const API_BASE = '/api/proxy?path='; // Utilizza il proxy
 
 const welcomeScreen = document.getElementById('welcome-screen');
 const dashboardScreen = document.getElementById('dashboard-screen');
@@ -25,9 +25,9 @@ function switchScreen(screen) {
 
 loginBtn.addEventListener('click', async () => {
   const key = apiKeyInput.value;
-  const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
-    headers: { 'x-api-key': key },
-  });  
+  const res = await fetch(`/api/proxy?path=api/company-name`, {
+    headers: { 'x-api-key': key }
+  });
   if (res.ok) {
     const data = await res.json();
     localStorage.setItem('apiKey', key);
@@ -41,7 +41,9 @@ loginBtn.addEventListener('click', async () => {
 startStandupBtn.addEventListener('click', async () => {
   switchScreen(standupScreen);
   const key = localStorage.getItem('apiKey');
-  const res = await fetch(`${API_PROXY}api/devs`, { headers: { 'Authorization': key }});
+  const res = await fetch(`/api/proxy?path=api/devs`, {
+    headers: { 'x-api-key': key }
+  });
   const devs = await res.json();
   dateDisplay.textContent = new Date().toLocaleDateString();
   timer = 0;
@@ -96,18 +98,21 @@ function formatTime(sec) {
 saveMeetingBtn.addEventListener('click', async () => {
   const rows = devTableBody.querySelectorAll('tr');
   const apiKey = localStorage.getItem('apiKey');
-  const devs = Array.from(rows).map(row => {
-    const name = row.children[0].textContent;
+  const standUpsInfo = Array.from(rows).map(row => {
+    const devId = row.children[0].textContent; // Replace this with actual devId if needed
     const time = row.querySelector('span').textContent;
     const notes = row.querySelector('textarea').value;
-    return { name, duration: time, notes };
+    const [minutes, seconds] = time.split(':').map(Number);
+    return { devId, durationMins: minutes, notes };
   });
+  
   const payload = {
     date: new Date().toISOString(),
-    duration: formatTime(timer),
-    devs
+    durationMins: timer / 60, // Convert seconds to minutes
+    standUpsInfo
   };
-  const res = await fetch(`${API_PROXY}api/stand-ups`, {
+  
+  const res = await fetch(`/api/proxy?path=api/stand-up`, {
     method: 'POST',
     headers: {
       'x-api-key': apiKey,
@@ -127,9 +132,9 @@ viewHistoryBtn.addEventListener('click', async () => {
   switchScreen(historyScreen);
   historyList.innerHTML = '';
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
-    headers: { 'x-api-key': key },
-  });  
+  const res = await fetch(`/api/proxy?path=api/stand-ups`, {
+    headers: { 'x-api-key': apiKey }
+  });
   const history = await res.json();
   history.forEach(meeting => {
     const li = document.createElement('li');
@@ -146,15 +151,12 @@ backToDashboardBtn.addEventListener('click', () => {
 
 async function showMeetingDetail(id) {
   const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
-    headers: { 'x-api-key': key },
-  });  
-  const data = await res.json();
-  const names = data.devs.map(dev => dev.name);
-  const durations = data.devs.map(dev => {
-    const [min, sec] = dev.duration.split(':').map(Number);
-    return min * 60 + sec;
+  const res = await fetch(`/api/proxy?path=api/stand-up&id=${id}`, {
+    headers: { 'x-api-key': apiKey }
   });
+  const data = await res.json();
+  const names = data.standUpsInfo.map(dev => dev.name);
+  const durations = data.standUpsInfo.map(dev => dev.durationMins);
   const ctx = document.getElementById('chart');
   ctx.classList.remove('hidden');
   if (chartInstance) chartInstance.destroy();
@@ -163,7 +165,7 @@ async function showMeetingDetail(id) {
     data: {
       labels: names,
       datasets: [{
-        label: 'Durata in secondi',
+        label: 'Durata in minuti',
         data: durations,
         backgroundColor: ['#4b9eff','#6be3c0','#ffcb77','#ff6b6b','#d3bce9']
       }]
