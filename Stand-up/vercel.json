@@ -1,10 +1,17 @@
 {
-    "version": 2,
-    "routes": [
-      {
-        "src": "/api/proxy",
-        "dest": "/api/proxy.js"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/proxy",
+      "methods": ["GET", "POST"],
+      "headers": {
+        "cache-control": "no-cache"
+      },
+      "continue": true
+    },
+    {
+      "src": "/api/proxy",
+      "dest": "/api/proxy.js"
+    }
+  ]
+}

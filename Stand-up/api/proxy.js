@@ -1,10 +1,10 @@
 export default async function handler(req, res) {
   const { path } = req.query;
-  const apiUrl = `https://standupparo-apis.vercel.app/${path}`;
 
+  const apiUrl = `https://standupparo-apis.vercel.app/${path}`;
   const headers = {
-    ...req.headers,
-    host: undefined,
+    Authorization: req.headers.authorization || '',
+    'Content-Type': 'application/json'
   };
 
   try {
@@ -14,11 +14,8 @@ export default async function handler(req, res) {
       body: req.method !== 'GET' ? JSON.stringify(req.body) : undefined,
     });
 
-    const contentType = response.headers.get('content-type') || '';
-    const isJson = contentType.includes('application/json');
-    const data = isJson ? await response.json() : await response.text();
-
-    res.status(response.status).send(data);
+    const data = await response.json();
+    res.status(response.status).json(data);
   } catch (error) {
     res.status(500).json({ error: 'Errore nel proxy', details: error.message });
   }
