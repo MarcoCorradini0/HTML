@@ -1,9 +1,4 @@
-const API_BASE = '/api/proxy?path='; // Utilizza il proxy
-
-const welcomeScreen = document.getElementById('welcome-screen');
-const dashboardScreen = document.getElementById('dashboard-screen');
-const standupScreen = document.getElementById('standup-screen');
-const historyScreen = document.getElementById('history-screen');
+const API_BASE = '/api/proxy?path=';
 
 const loginBtn = document.getElementById('login-btn');
 const apiKeyInput = document.getElementById('api-key');
@@ -12,64 +7,53 @@ const startStandupBtn = document.getElementById('start-standup');
 const devTableBody = document.getElementById('dev-table-body');
 const dateDisplay = document.getElementById('date');
 const durationDisplay = document.getElementById('duration');
-const viewHistoryBtn = document.getElementById('view-history');
 const saveMeetingBtn = document.getElementById('save-meeting');
-const historyList = document.getElementById('history-list');
-const backToDashboardBtn = document.getElementById('back-to-dashboard');
-let timer = 0, interval, chartInstance;
+
+let timer = 0, interval;
 
 function switchScreen(screen) {
-  [welcomeScreen, dashboardScreen, standupScreen, historyScreen].forEach(s => s.classList.add('hidden'));
+  document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
   screen.classList.remove('hidden');
 }
 
 loginBtn.addEventListener('click', async () => {
   const key = apiKeyInput.value;
+  if (!key) return alert("Inserisci una chiave API");
+
   const res = await fetch(`https://standupparo-apis.vercel.app/api/company-name`, {
     headers: { 'x-api-key': key }
   });
+
   if (res.ok) {
     const data = await res.json();
     localStorage.setItem('apiKey', key);
     companyNameDisplay.textContent = `🏢 ${data.companyName}`;
-    switchScreen(dashboardScreen);
+    switchScreen(document.getElementById('dashboard-screen'));
   } else {
-    alert("Chiave non valida");
+    alert("Chiave API non valida!");
   }
 });
 
 startStandupBtn.addEventListener('click', async () => {
-  switchScreen(standupScreen);
+  switchScreen(document.getElementById('standup-screen'));
   const key = localStorage.getItem('apiKey');
   const res = await fetch(`https://standupparo-apis.vercel.app/api/devs`, {
     headers: { 'x-api-key': key }
   });
   const devs = await res.json();
-  dateDisplay.textContent = new Date().toLocaleDateString();
-  timer = 0;
-  updateDuration();
-  clearInterval(interval);
-  interval = setInterval(() => {
-    timer++;
-    updateDuration();
-  }, 1000);
-  devTableBody.innerHTML = '';
-  devs.forEach(dev => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
+  devTableBody.innerHTML = devs.map(dev => `
+    <tr>
       <td>${dev.name}</td>
-      <td>
-        <button onclick="toggleTimer(this)">▶️</button>
-        <span>00:00</span>
-      </td>
-      <td><textarea placeholder="Scrivi note..."></textarea></td>`;
-    devTableBody.appendChild(row);
-  });
+      <td><button onclick="toggleTimer(this)">▶️</button> <span>00:00</span></td>
+      <td><textarea placeholder="Scrivi note..."></textarea></td>
+    </tr>
+  `).join('');
 });
 
 function toggleTimer(btn) {
   const span = btn.nextElementSibling;
   let seconds = 0;
+
   if (btn.dataset.running === 'true') {
     clearInterval(btn.dataset.intervalId);
     btn.textContent = '▶️';
@@ -85,10 +69,6 @@ function toggleTimer(btn) {
   }
 }
 
-function updateDuration() {
-  durationDisplay.textContent = formatTime(timer);
-}
-
 function formatTime(sec) {
   const m = String(Math.floor(sec / 60)).padStart(2, '0');
   const s = String(sec % 60).padStart(2, '0');
@@ -99,85 +79,50 @@ saveMeetingBtn.addEventListener('click', async () => {
   const rows = devTableBody.querySelectorAll('tr');
   const apiKey = localStorage.getItem('apiKey');
   const standUpsInfo = Array.from(rows).map(row => {
-    const devId = row.children[0].textContent; // Replace this with actual devId if needed
+    const devId = row.dataset.devId;
     const time = row.querySelector('span').textContent;
     const notes = row.querySelector('textarea').value;
     const [minutes, seconds] = time.split(':').map(Number);
-    return { devId, durationMins: minutes, notes };
-  });
-  
+    if (!devId || isNaN(minutes) || isNaN(seconds)) {
+      console.error('Invalid data for row:', { devId, time });
+      return null;
+    }
+    const durationMins = Math.round(minutes + seconds / 60); // **Correzione per interi**
+    return { devId, durationMins, notes };
+  }).filter(info => info !== null);
+
+  if (standUpsInfo.length === 0) {
+    alert('Nessun dato valido da salvare.');
+    return;
+  }
+
   const payload = {
     date: new Date().toISOString(),
-    durationMins: timer / 60, // Convert seconds to minutes
+    durationMins: Math.round(timer / 60), // **Correzione per interi**
     standUpsInfo
   };
-  console.log(payload);
-  const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-up`, {
-    method: 'POST',
-    headers: {
-      'x-api-key': apiKey,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
 
-  if (!res.ok) {
-    const errorData = await res.json();
-    console.error('Error response:', errorData);
-    alert("Errore nel salvataggio: " + errorData.error);
+  console.log('Payload aggiornato:', JSON.stringify(payload, null, 2));
+
+  try {
+    const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-up`, {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error('Errore API:', errorData);
+      alert("Errore nel salvataggio: " + JSON.stringify(errorData));
+    } else {
+      alert('Stand-Up salvato con successo!');
+    }
+  } catch (error) {
+    console.error('Errore di rete:', error);
+    alert("Errore di rete: " + error.message);
   }
 });
-
-viewHistoryBtn.addEventListener('click', async () => {
-  switchScreen(historyScreen);
-  historyList.innerHTML = '';
-  const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-ups`, {
-    headers: { 'x-api-key': apiKey }
-  });
-  const history = await res.json();
-  history.forEach(meeting => {
-    const li = document.createElement('li');
-    li.textContent = `${new Date(meeting.date).toLocaleDateString()} – Durata: ${meeting.duration}`;
-    li.addEventListener('click', () => showMeetingDetail(meeting._id));
-    historyList.appendChild(li);
-  });
-});
-
-backToDashboardBtn.addEventListener('click', () => {
-  switchScreen(dashboardScreen);
-  document.getElementById('chart').classList.add('hidden');
-});
-
-async function showMeetingDetail(id) {
-  const apiKey = localStorage.getItem('apiKey');
-  const res = await fetch(`https://standupparo-apis.vercel.app/api/stand-up&id=${id}`, {
-    headers: { 'x-api-key': apiKey }
-  });
-  const data = await res.json();
-  const names = data.standUpsInfo.map(dev => dev.name);
-  const durations = data.standUpsInfo.map(dev => dev.durationMins);
-  const ctx = document.getElementById('chart');
-  ctx.classList.remove('hidden');
-  if (chartInstance) chartInstance.destroy();
-  chartInstance = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: names,
-      datasets: [{
-        label: 'Durata in minuti',
-        data: durations,
-        backgroundColor: ['#4b9eff','#6be3c0','#ffcb77','#ff6b6b','#d3bce9']
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: '🧁 Distribuzione durata per sviluppatore'
-        }
-      }
-    }
-  });
-}
