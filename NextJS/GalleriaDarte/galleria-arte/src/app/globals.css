@@ -1,6 +1,9 @@
+/* Variabili globali per tema chiaro/scuro */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --gold: #ffd700;
+  --gold-dark: #c5a400;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -10,21 +13,19 @@
   }
 }
 
-html,
-body {
+html, body {
   max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
   background: var(--background);
+  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Reset base */
 * {
+  font-size: x-large;
+  text-align: -webkit-center;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -35,8 +36,96 @@ a {
   text-decoration: none;
 }
 
+/* Effetto tema scuro */
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+/* Layout della galleria */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(528px, 0fr));
+  gap: 4%;
+  margin: 4% auto;
+  justify-content: space-around;
+  max-width: 98vw;
+  padding: 0% 4%;
+}
+
+/* Stile delle immagini */
+.gallery img {
+  width: 160%;
+  max-width: 528px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s, border 0.3s ease-in-out;
+}
+
+/* Effetto hover dorato */
+.gallery img:hover {
+  transform: scale(0.95);
+  border: 3px solid var(--gold);
+}
+
+/* Responsività per schermi più piccoli */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .gallery img {
+    max-width: 180px;
+  }
+}
+
+/* Stile della pagina di acquisto */
+.purchase-page {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.art-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.art-image:hover {
+  transform: scale(1.05);
+}
+
+/* Selettore quantità */
+.quantity-input {
+  width: 60px;
+  padding: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid var(--foreground);
+  border-radius: 4px;
+}
+
+/* Pulsante di pagamento */
+.purchase-button {
+  background-color: var(--gold);
+  color: black;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.purchase-button:hover {
+  background-color: var(--gold-dark);
+  transform: scale(1.05);
 }

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_cards_card_bases",
+  "info": {
+    "displayName": "CardBase"
+  },
+  "options": {},
+  "attributes": {
+    "Price": {
+      "type": "decimal"
+    },
+    "CreatedDatetime": {
+      "type": "datetime"
+    },
+    "Image": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
