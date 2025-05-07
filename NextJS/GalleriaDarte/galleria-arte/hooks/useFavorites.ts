@@ -1,27 +1,23 @@
 "use client";
-
 import { useState, useEffect } from "react";
+import { Artwork } from "../lib/artworks";
 
 export function useFavorites() {
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<Artwork[]>([]);
 
   useEffect(() => {
-    const storedFavorites = localStorage.getItem("favorites");
-    if (storedFavorites) {
-      setFavorites(JSON.parse(storedFavorites));
-    }
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    setFavorites(storedFavorites);
   }, []);
 
-  const toggleFavorite = (id: string) => {
-    const updatedFavorites = favorites.includes(id)
-      ? favorites.filter((favId) => favId !== id) // Rimuovi dai preferiti
-      : [...favorites, id]; // Aggiungi ai preferiti
+  function toggleFavorite(artwork: Artwork) {
+    const newFavorites = favorites.some((fav) => fav.id === artwork.id)
+      ? favorites.filter((fav) => fav.id !== artwork.id)
+      : [...favorites, artwork];
 
-    setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-  };
+    setFavorites(newFavorites);
+    localStorage.setItem("favorites", JSON.stringify(newFavorites));
+  }
 
-  const isFavorite = (id: string) => favorites.includes(id);
-
-  return { favorites, toggleFavorite, isFavorite };
+  return { favorites, toggleFavorite };
 }

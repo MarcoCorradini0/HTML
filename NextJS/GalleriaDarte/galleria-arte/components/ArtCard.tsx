@@ -10,7 +10,7 @@ type ArtCardProps = {
 };
 
 export default function ArtCard({ artwork }: ArtCardProps) {
-  const { isFavorite, toggleFavorite } = useFavorites();
+  const { favorites, isFavorite, toggleFavorite } = useFavorites();
   const [price, setPrice] = useState(artwork.price);
 
   useEffect(() => {
@@ -34,13 +34,13 @@ export default function ArtCard({ artwork }: ArtCardProps) {
 
         {/* Pulsante per aggiungere/rimuovere preferiti */}
         <button
-          className={`mt-2 p-2 rounded ${isFavorite(artwork.id) ? "bg-red-500" : "bg-gray-300"}`}
+          className={`favorite-button ${isFavorite(artwork.id) ? "favorite" : ""}`}
           onClick={(e) => {
-            e.preventDefault(); // Evita che il pulsante interrompa la navigazione
+            e.preventDefault();
             toggleFavorite(artwork.id);
           }}
         >
-          {isFavorite(artwork.id) ? "❤️ Rimuovi" : "🤍 Aggiungi ai Preferiti"}
+          {isFavorite(artwork.id) ? "❤️" : "🤍"}
         </button>
       </div>
     </Link>

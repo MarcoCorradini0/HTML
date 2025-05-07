@@ -84,7 +84,7 @@ a {
 /* Stile della pagina di acquisto */
 .purchase-page {
   max-width: 600px;
-  margin: auto;
+  margin: 4%;
   text-align: center;
 }
 
@@ -103,11 +103,11 @@ a {
 /* Selettore quantità */
 .quantity-input {
   width: 60px;
-  padding: 5px;
+  padding: 12px;
+  margin: 10px;
   font-size: 16px;
   margin-top: 10px;
   text-align: center;
-  border: 1px solid var(--foreground);
   border-radius: 4px;
 }
 
@@ -129,3 +129,39 @@ a {
   background-color: var(--gold-dark);
   transform: scale(1.05);
 }
+
+.favorite-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
+/* Stile del login */
+.auth-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+button {
+  background-color: gold;
+  color: black;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+
