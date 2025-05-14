@@ -2,10 +2,16 @@
 import { useSession, signOut } from "next-auth/react";
 import { useFavorites } from "../../../hooks/useFavorites";
 import { Artwork } from "../../../lib/artworks";
+import { useEffect, useState } from "react";
 
 export default function AccountPage() {
   const { data: session, status } = useSession();
   const { favorites } = useFavorites();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   if (status === "loading") {
     return <div className="loading">Caricamento...</div>;
