@@ -1,4 +1,5 @@
 export type Artwork = {
+  quantity: string | number | readonly string[] | undefined;
   id: string;
   title: string;
   author: string;
@@ -14,6 +15,7 @@ export async function getArtworks(): Promise<Artwork[]> {
   const data: any[] = await res.json();
 
   return data.map((artwork): Artwork => ({
+    quantity: 1,
     id: String(artwork.id),
     title: `Opera ${artwork.id}`,
     author: artwork.author,

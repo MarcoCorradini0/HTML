@@ -1,7 +1,7 @@
 "use client";
 import { useSession, signOut } from "next-auth/react";
-import { useFavorites } from "../../../hooks/useFavorites";
-import { Artwork } from "../../../lib/artworks";
+import { useFavorites } from "../../hooks/useFavorites";
+import { Artwork } from "../../lib/artworks";
 import { useEffect, useState } from "react";
 
 export default function AccountPage() {
