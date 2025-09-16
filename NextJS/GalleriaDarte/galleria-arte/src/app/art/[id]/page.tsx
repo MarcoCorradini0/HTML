@@ -1,4 +1,4 @@
-import { getArtworks } from "../../../../lib/artworks";
+import { getArtworks } from "../../../lib/artworks";
 
 export default async function ArtDetailPage({ params }: { params: { id: string } }) {
   const artworks = await getArtworks();

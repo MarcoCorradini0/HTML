@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Artwork } from "../lib/artworks";
 
@@ -10,14 +9,11 @@ export function useFavorites() {
     setFavorites(storedFavorites);
   }, []);
 
-  function toggleFavorite(artwork: Artwork) {
-    const newFavorites = favorites.some((fav) => fav.id === artwork.id)
-      ? favorites.filter((fav) => fav.id !== artwork.id)
-      : [...favorites, artwork];
-
+  const addFavorite = (artwork: Artwork) => {
+    const newFavorites = [...favorites, artwork];
     setFavorites(newFavorites);
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
-  }
+  };
 
-  return { favorites, toggleFavorite };
+  return { favorites, addFavorite };
 }
