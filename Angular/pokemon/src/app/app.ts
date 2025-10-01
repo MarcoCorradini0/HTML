@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { PokemonType } from "../pokemon-type";
 import { PokemonTypeComponent } from "./components/pokemon-type/pokemon-type";
 
-
 export interface Pokemon {
   id: string;
   name: string;
@@ -23,6 +22,7 @@ export class AppComponent {
     { name: 'water', id: '11' },
     { name: 'grass', id: '12' },
   ];
+  
   pokemonArray: Pokemon[] = [
     { id: "4", name: "charmander", typeId: "10" },
     { id: "5", name: "charmeleon", typeId: "10" },

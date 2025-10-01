@@ -1,0 +1,13 @@
+h2 {
+  color: #e53935;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 4px 0;
+}
