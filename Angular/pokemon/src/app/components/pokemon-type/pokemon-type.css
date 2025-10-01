@@ -1,13 +1,62 @@
-h2 {
-  color: #e53935;
-}
-
+/* Contenitore della lista dei Pokémon */
 ul {
-  display: flex;
   list-style: none;
-  padding: 0;
+  padding: 1rem;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
+/* Ogni card Pokémon */
 li {
-  padding: 4px 0;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  min-width: 140px;
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  flex: 1 1 calc(50% - 2rem); /* 2 colonne su mobile */
+}
+
+/* Hover effect */
+li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Nome del Pokémon */
+li span {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Tablet: 3 colonne */
+@media (min-width: 600px) {
+  li {
+    flex: 1 1 calc(33.333% - 2rem);
+  }
+}
+
+/* Desktop: 4 colonne */
+@media (min-width: 900px) {
+  li {
+    flex: 1 1 calc(25% - 2rem);
+  }
+}
+
+/* Evita lo scroll orizzontale globale */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }

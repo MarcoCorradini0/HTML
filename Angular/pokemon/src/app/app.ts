@@ -17,6 +17,10 @@ export interface Pokemon {
 })
 
 export class AppComponent {
+
+  faiQualcosa() {
+  }
+
   types: PokemonType[] = [
     { name: 'fire', id: '10' },
     { name: 'water', id: '11' },
@@ -466,4 +470,5 @@ export class AppComponent {
     { id: "10274", name: "ogerpon-hearthflame-mask", typeId: "12" },
     { id: "10275", name: "ogerpon-cornerstone-mask", typeId: "12" }
   ];
+
 }

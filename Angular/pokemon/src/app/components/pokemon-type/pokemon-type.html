@@ -1,6 +1,6 @@
 <h2>{{ type().name | titlecase }}</h2>
 <ul>
-    <li *ngFor="let pokemon of filteredPokemon">
-        {{ pokemon.name | titlecase}}
+    <li *ngFor="let pokemon of filteredPokemon()">
+        <span> {{ pokemon.name | titlecase}} </span>
     </li>
 </ul>

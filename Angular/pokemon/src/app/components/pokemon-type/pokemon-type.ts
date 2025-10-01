@@ -14,5 +14,7 @@ import { NgFor, TitleCasePipe } from '@angular/common';
 export class PokemonTypeComponent {
     type = input.required<PokemonType>();
     pokemonList = input.required<Pokemon[]>();
-    filteredPokemon = this.pokemonList().filter(pokemon => pokemon.typeId === this.type().id);
+    filteredPokemon = computed(() => 
+      this.pokemonList().filter(pokemon => pokemon.typeId === this.type().id)
+    );
 }

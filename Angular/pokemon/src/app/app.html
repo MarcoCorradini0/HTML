@@ -1,9 +1,10 @@
 <h1>Tipi di Pokémon</h1>
 
+<button (click)="faiQualcosa()">Clicca</button>
+
 <div *ngFor="let type of types">
   <app-pokemon-type
     [type]="type"
     [pokemonList]="pokemonArray">
   </app-pokemon-type>
-  
 </div>
