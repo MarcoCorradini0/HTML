@@ -1,6 +1,6 @@
 .header {
     background: #222;
-    padding: 0.5rem 0;
+    padding: 0;
 }
 
 nav {
@@ -9,7 +9,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: var(--p-content-background);
+    background-color: black;
     border-bottom: 1px solid var(--p-content-border-color);
 }
 
@@ -20,18 +20,25 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--p-text-color);
+    color: white;
     padding: 0.5rem 1rem;
     border-radius: var(--p-border-radius);
     transition: background-color 0.2s;
 }
 
+.nav-links a.active {
+  background-color: var(--p-primary-color);
+  color: red;
+  font-weight: 600;
+}
+
 .nav-links a:hover {
     background-color: var(--p-highlight-background);
-    color: var(--p-highlight-text-color);
+    color: crimson;
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
 }
+
