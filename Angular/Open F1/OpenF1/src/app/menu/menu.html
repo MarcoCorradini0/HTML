@@ -1,16 +1,18 @@
 <header class="header">
-  <app-theme-toggle></app-theme-toggle>
   <nav class="nav">
-    <!-- Home link con emoji -->
-    <a routerLink="/" style="color: #fff; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
-      <span>🏠</span>
-      <span>Home</span>
-    </a>
-    <!-- Gran premi link con immagine -->
-    <a routerLink="/gran-premi" style="color: #fff; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
-      <span>🏆</span>
-      <span>Gran premi</span>
-    </a>
-    <!-- ...aggiungi altri link qui in futuro... -->
+    <div class="nav-links">
+      <a routerLink="/" style="color: #fff; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🏠</span>
+        <span>Home</span>
+      </a>
+      <a routerLink="/gran-premi" style="color: #fff; text-decoration: none; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🏆</span>
+        <span>Gran premi</span>
+      </a>
+      <!-- ...aggiungi altri link qui in futuro... -->
+    </div>
+    <div class="nav-actions">
+      <app-theme-toggle></app-theme-toggle>
+    </div>
   </nav>
 </header>

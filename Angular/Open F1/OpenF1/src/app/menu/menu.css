@@ -1,11 +1,37 @@
-.header{
+.header {
     background: #222;
     padding: 0.5rem 0;
 }
 
-nav{
+nav {
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--p-content-background);
+    border-bottom: 1px solid var(--p-content-border-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--p-text-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--p-border-radius);
+    transition: background-color 0.2s;
+}
+
+.nav-links a:hover {
+    background-color: var(--p-highlight-background);
+    color: var(--p-highlight-text-color);
+}
+
+.nav-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
 }
