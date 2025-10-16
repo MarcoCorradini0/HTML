@@ -78,6 +78,47 @@
       margin-top: auto;
       box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
     }
+    .navbar-carousel-container {
+      width: 100%;
+      overflow: hidden;
+      background: transparent;
+      position: relative;
+      height: 3.2rem;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-carousel {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      animation: scroll-navbar 36s linear infinite;
+      /* Durata aumentata per rallentare */
+    }
+    @keyframes scroll-navbar {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .navbar-carousel a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+      white-space: nowrap;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      background: none;
+    }
+    .navbar-carousel a:hover {
+      background: rgba(255,255,255,0.15);
+    }
     @media (max-width: 600px) {
       .navbar {
         gap: 0.5rem;
@@ -98,6 +139,18 @@
         font-size: 0.95rem;
         padding: 0.7rem 0;
       }
+      .navbar-carousel {
+        gap: 0.8rem;
+        animation-duration: 24s;
+        /* Durata aumentata per rallentare su mobile */
+      }
+      .navbar-carousel a {
+        padding: 0.4rem 0.7rem;
+        font-size: 1rem;
+      }
+      .navbar-carousel-container {
+        height: 2.5rem;
+      }
     }
   </style>
 </head>
@@ -106,16 +159,27 @@
     Marco Corradini - Presentazione progetti web developer
   </div>
   <header>
-    <nav class="navbar">
-      <a href="Angular/index.html">🅰️ Angular</a>
-      <a href="Bootstrap/index.html">🅱️ Bootstrap</a>
-      <a href="CV/img/Pages/index.html">📄 CV HTML</a>
-      <a href="Datatables/index.html">📊 Datatables</a>
-      <a href="NextJS/">⚡ NextJS</a>
-      <a href="Retro stile/index.html">🕹️ Retro</a>
-      <a href="Stand-up/index.html">🎤 Stand-up</a>
-      <a href="Swiper/Esercizi/Testing/index.html">🌀 Swiper</a>
-    </nav>
+    <div class="navbar-carousel-container">
+      <div class="navbar-carousel">
+        <a href="Angular/index.html">🅰️ Angular</a>
+        <a href="Bootstrap/index.html">🅱️ Bootstrap</a>
+        <a href="CV/img/Pages/index.html">📄 CV HTML</a>
+        <a href="Datatables/index.html">📊 Datatables</a>
+        <a href="NextJS/">⚡ NextJS</a>
+        <a href="Retro stile/startup.html">🕹️ Retro</a>
+        <a href="Stand-up/index.html">🎤 Stand-up</a>
+        <a href="Swiper/Esercizi/Testing/index.html">🌀 Swiper</a>
+        <!-- Repeat links for infinite effect -->
+        <a href="Angular/index.html">🅰️ Angular</a>
+        <a href="Bootstrap/index.html">🅱️ Bootstrap</a>
+        <a href="CV/img/Pages/index.html">📄 CV HTML</a>
+        <a href="Datatables/index.html">📊 Datatables</a>
+        <a href="NextJS/">⚡ NextJS</a>
+        <a href="Retro stile/startup.html">🕹️ Retro</a>
+        <a href="Stand-up/index.html">🎤 Stand-up</a>
+        <a href="Swiper/Esercizi/Testing/index.html">🌀 Swiper</a>
+      </div>
+    </div>
   </header>
   <div class="center-image">
     <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Frontend Projects" />
