@@ -7,22 +7,16 @@
   width: 100%;
 }
 
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
 .footer-logo {
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
+  display: flex;
+  position: absolute;
+  left: 14%;
+  top: 89%;
+  transform: translateX(-50%);
 }
 
-.footer-links {
-  margin-top: 10px;
+.copyright {
+  margin: 10px;
 }
 
 .footer-links a {
