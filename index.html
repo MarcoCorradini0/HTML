@@ -4,18 +4,127 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HTML Frontend Projects</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    header {
+      background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+      color: #fff;
+      padding: 1.2rem 0 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      width: 100%;
+    }
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+      white-space: nowrap;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .navbar a:hover {
+      background: rgba(255,255,255,0.15);
+    }
+    .center-image {
+      margin: 3rem auto 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .center-image img {
+      max-width: 350px;
+      width: 90vw;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(99,102,241,0.08);
+    }
+    .main-title {
+      text-align: center;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #6366f1;
+      margin: 2rem 0 1.2rem 0;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px rgba(99,102,241,0.10);
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+      background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+      color: #fff;
+      font-size: 1rem;
+      margin-top: auto;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+      }
+      .navbar a {
+        padding: 0.4rem 0.7rem;
+        font-size: 1rem;
+      }
+      .center-image img {
+        max-width: 90vw;
+      }
+      .main-title {
+        font-size: 1.4rem;
+        margin: 1.2rem 0 0.7rem 0;
+      }
+      footer {
+        font-size: 0.95rem;
+        padding: 0.7rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Benvenuto nella mia raccolta di progetti frontend!</h1>
-  <ul>
-    <li><a href="Angular/index.html">Progetto Angular</a></li>
-    <li><a href="Bootstrap/index.html">Progetto Bootstrap</a></li>
-    <li><a href="CV/img/Pages/index.html">CV in HTML</a></li>
-    <li><a href="Datatables/index.html">Datatables</a></li>
-    <li><a href="NextJS/">Progetti in NextJS</a></li>
-    <li><a href="Retro stile/index.html">Progetto Retro</a></li>
-    <li><a href="Stand-up/index.html">Progetto Stand-up</a></li>
-    <li><a href="Swiper/Esercizi/Testing/index.html">Progetto Swiper</a></li>
-  </ul>
+  <div class="main-title">
+    Marco Corradini - Presentazione progetti web developer
+  </div>
+  <header>
+    <nav class="navbar">
+      <a href="Angular/index.html">🅰️ Angular</a>
+      <a href="Bootstrap/index.html">🅱️ Bootstrap</a>
+      <a href="CV/img/Pages/index.html">📄 CV HTML</a>
+      <a href="Datatables/index.html">📊 Datatables</a>
+      <a href="NextJS/">⚡ NextJS</a>
+      <a href="Retro stile/index.html">🕹️ Retro</a>
+      <a href="Stand-up/index.html">🎤 Stand-up</a>
+      <a href="Swiper/Esercizi/Testing/index.html">🌀 Swiper</a>
+    </nav>
+  </header>
+  <div class="center-image">
+    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" alt="Frontend Projects" />
+  </div>
+  <footer>
+    &copy; <span id="year"></span> Marco Corradini. Tutti i diritti riservati.
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
