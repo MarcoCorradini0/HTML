@@ -10,8 +10,9 @@
 .footer-logo {
   display: flex;
   position: absolute;
+  padding: 1rem;
   left: 14%;
-  top: 93%;
+  top: 92%;
   transform: translateX(-50%);
 }
 
