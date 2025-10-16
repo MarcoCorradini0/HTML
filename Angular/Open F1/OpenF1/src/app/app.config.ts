@@ -2,11 +2,19 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideAnimationsAsync(), // ⭐ Necessario per le animazioni PrimeNG
+    providePrimeNG({           // ⭐ Configurazione PrimeNG
+      theme: {
+        preset: 'Aura'          // ⭐ Tema di default
+      }
+    })
   ]
 };
