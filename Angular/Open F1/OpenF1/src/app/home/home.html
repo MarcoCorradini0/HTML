@@ -1,1 +1,7 @@
-<p>home works!</p>
+<section class="video-section">
+  <div class="video-wrapper">
+    <iframe *ngIf="videoUrl" [src]="videoUrl"
+            title="Uploads playlist"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</section>
