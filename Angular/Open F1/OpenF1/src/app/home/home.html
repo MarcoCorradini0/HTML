@@ -1,7 +1,47 @@
-<section class="video-section">
-  <div class="video-wrapper">
-    <iframe *ngIf="videoUrl" [src]="videoUrl"
-            title="Uploads playlist"
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<section class="video-section" role="region" aria-label="F1 teams video carousel">
+  <div class="carousel" aria-live="polite">
+    <button class="nav-button prev" (click)="previousVideo()" aria-label="Previous team">
+      <span aria-hidden="true">&lt;</span>
+    </button>
+
+    <div class="video-card">
+      <div class="video-wrapper" aria-hidden="false">
+        <iframe *ngIf="teams[activeIndex]?.playlistUrl"
+                [src]="teams[activeIndex].playlistUrl"
+                [title]="teams[activeIndex].name + ' uploads'"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="video-meta">
+        <h3 class="team-name">{{ teams[activeIndex].name }}</h3>
+        <p class="team-actions">
+          <a class="open-channel" 
+             [href]="'https://www.youtube.com/channel/' + teams[activeIndex].channelId + '/videos'"
+             target="_blank" rel="noopener noreferrer">
+            Apri su YouTube
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <button class="nav-button next" (click)="nextVideo()" aria-label="Next team">
+      <span aria-hidden="true">&gt;</span>
+    </button>
   </div>
+
+  <ul class="carousel-indicators" role="tablist" aria-label="Teams">
+    <li *ngFor="let t of teams; let i = index" role="presentation">
+      <button
+        role="tab"
+        [attr.aria-selected]="i === activeIndex"
+        (click)="activeIndex = i"
+        [class.active]="i === activeIndex"
+        [attr.aria-label]="'Visualizza ' + t.name">
+        {{ t.name }}
+      </button>
+    </li>
+  </ul>
 </section>
