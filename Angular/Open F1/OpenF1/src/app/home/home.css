@@ -1,24 +1,3 @@
-:root{
-  /* light theme defaults */
-  --bg: #ffffff;
-  --card: #ffffff;
-  --text: #0f1720;
-  --muted: #6b7280;
-  --accent: #e10600;
-  --shadow: 0 6px 20px rgba(2,6,23,0.06);
-}
-
-.dark{
-  /* dark theme overrides (applied by Theme service adding .dark on <html>) */
-  --bg: #0f1720;
-  --card: rgba(255,255,255,0.02);
-  --text: #ffffff;
-  --muted: #9ca3af;
-  --accent: #e10600;
-  --shadow: 0 6px 20px rgba(2,6,23,0.6);
-}
-
-/* base */
 .video-section {
   background: var(--bg);
   padding: 1.5rem;

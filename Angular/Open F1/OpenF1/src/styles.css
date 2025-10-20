@@ -48,3 +48,34 @@ h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 h5 { font-size: 1.125rem; }
 h6 { font-size: 1rem; }
+
+/* THEME VARIABLES (globale) */
+:root{
+  /* light theme */
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #0f1720;
+  --muted: #6b7280;
+  --accent: #e10600;
+  --shadow: 0 6px 20px rgba(2,6,23,0.06);
+}
+
+.dark{
+  /* dark theme overrides */
+  --bg: #0f1720;
+  --card: rgba(255,255,255,0.02);
+  --text: #ffffff;
+  --muted: #9ca3af;
+  --accent: #e10600;
+  --shadow: 0 6px 20px rgba(2,6,23,0.6);
+}
+
+/* apply to page */
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color .18s ease, color .18s ease;
+}
+
+/* keep existing resets below */
+* { box-sizing: border-box; }

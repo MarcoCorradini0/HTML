@@ -37,3 +37,12 @@
 .footer-links a:hover {
   color: #fff;
 }
+
+@media (max-width: 600px) {
+  .footer-logo {
+    position: static;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+}

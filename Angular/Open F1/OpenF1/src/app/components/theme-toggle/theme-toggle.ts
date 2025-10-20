@@ -9,6 +9,10 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './theme-toggle.css'
 })
 export class ThemeToggle {
+theme: any;
+toggle() {
+throw new Error('Method not implemented.');
+}
   private readonly themeService = inject(Theme);
  
   get isDark() {
