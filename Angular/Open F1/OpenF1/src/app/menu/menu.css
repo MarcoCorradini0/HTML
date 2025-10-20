@@ -1,5 +1,5 @@
 .header {
-    background: #222;
+    background: var(--nav-bg);
     padding: 0;
 }
 
@@ -10,7 +10,7 @@ nav {
     align-items: center;
     padding: 1rem;
     background-color: black;
-    border-bottom: 1px solid var(--p-content-border-color);
+    border-bottom: 1px solid var(--nav-border);
 }
 
 .nav-links {
@@ -20,26 +20,26 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: var(--nav-text);
     padding: 0.5rem 1rem;
     border-radius: var(--p-border-radius);
     transition: background-color 0.2s;
 }
 
 .nav-links a.active {
-  background-color: var(--p-primary-color);
-  color: red;
-  font-weight: 600;
+    background-color: var(--p-primary-color);
+    color: var(--accent);
+    font-weight: 600;
 }
 
 .nav-links a:hover {
     background-color: var(--p-highlight-background);
-    color: crimson;
+    color: var(--nav-hover);
 }
 
 .nav-actions {
     display: flex;
     align-items: center;
-    color: white;
+    color: var(--nav-text);
 }
 
