@@ -63,18 +63,6 @@
 /* actions */
 .team-actions { margin: 0; }
 
-.open-channel {
-  display: inline-block;
-  padding: 0.4rem 0.75rem;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: transform .12s ease, box-shadow .12s ease;
-  box-shadow: 0 3px 8px rgba(225,16,0,0.18);
-}
-
 /* navigation buttons */
 .nav-button {
   background: rgba(255,255,255,0.04);

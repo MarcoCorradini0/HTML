@@ -23,10 +23,6 @@ throw new Error('Method not implemented.');
     return this.isDark ? 'pi pi-sun' : 'pi pi-moon';
   }
  
-  get themeLabel() {
-    return this.isDark ? 'Tema Chiaro' : 'Tema Scuro';
-  }
- 
   toggleTheme() {
     this.themeService.toggleTheme();
   }

@@ -14,32 +14,31 @@ nav {
 }
 
 .nav-links {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .nav-links a {
-    text-decoration: none;
-    color: var(--nav-text);
-    padding: 0.5rem 1rem;
-    border-radius: var(--p-border-radius);
-    transition: background-color 0.2s;
+  text-decoration: none;
+  color: var(--nav-text);
+  padding: 0.5rem 1rem;
+  border-radius: var(--p-border-radius);
+  transition: background-color 0.2s;
 }
 
 .nav-links a.active {
-    background-color: var(--p-primary-color);
-    color: var(--accent);
-    font-weight: 600;
+  background-color: var(--p-primary-color);
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .nav-links a:hover {
-    background-color: var(--p-highlight-background);
-    color: var(--nav-hover);
+  background-color: var(--p-highlight-background);
+  color: var(--nav-hover);
 }
 
 .nav-actions {
-    display: flex;
-    align-items: center;
-    color: var(--nav-text);
+  display: flex;
+  align-items: center;
+  color: var(--nav-text);
 }
-
