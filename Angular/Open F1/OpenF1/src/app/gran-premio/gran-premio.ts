@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
   selector: 'app-gran-premio',
   imports: [DatePipe],
   templateUrl: './gran-premio.html',
-  styleUrl: './gran-premio.css'
+  styleUrl: '../gran-premi/gran-premi.css'
 })
 export class GranPremio {
   private readonly route = inject(ActivatedRoute);

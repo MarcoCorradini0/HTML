@@ -1,19 +1,22 @@
 <h2>{{ sessions[0].location }} - {{ sessions[0].year }}</h2>
 
-  <div class="sessions-grid">
-    @for (row of sessions; track $index) {
-      <div class="session-card">
-        <h3>{{ row.session_type }}</h3>
-        <div class="session-info">
-          <p><span>Data inizio:</span> {{ row.date_start | date: 'dd/MM/yyyy' }}</p>
-          <p><span>Data fine:</span> {{ row.date_end | date: 'dd/MM/yyyy' }}</p>
-          <p><span>Tipo:</span> {{ row.session_type }}</p>
-          <p><span>Località:</span> {{ row.location }}</p>
-          <p><span>Circuito:</span> {{ row.circuit_short_name }}</p>
-          <p><span>Fuso orario:</span> {{ row.gmt_offset }}</p>
-        </div>
+@for (row of sessions; track $index) {
+  <div class="card-wrapper">
+    <div class="card">
+      <h3>{{ row.session_type }}</h3>
+      <h5>{{ row.circuit_short_name }}</h5>
+      <h6>{{ row.date_start | date: 'dd/MM/yyyy' }} - {{ row.date_end | date: 'dd/MM/yyyy' }}</h6>
+      
+      <div class="dettagli">
+        <p><strong>Località:</strong> {{ row.location }}</p>
+        <p><strong>Fuso orario:</strong> {{ row.gmt_offset }}</p>
       </div>
-    }
+    </div>
   </div>
+}
 
-  <a class="back-button" href="/gran-premi">← Torna ai Gran Premi</a>
+<div style="margin: 2rem;">
+  <a class="open-channel" href="/gran-premi">
+    ← Torna ai Gran Premi
+  </a>
+</div>

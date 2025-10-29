@@ -1,8 +1,11 @@
 .ySelector {
-    margin: 1rem;
-    display: flex;
-    justify-content: left;
+  position: relative;
+  z-index: 10;
+  margin: 1rem;
+  display: flex;
+  justify-content: flex-start;
 }
+
 
 .card-wrapper {
     display: inline-flex;
@@ -27,6 +30,7 @@
     justify-items: baseline;
     text-align: justify;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.25));
+    z-index: 1;
 }
 
 /* Overlay */
