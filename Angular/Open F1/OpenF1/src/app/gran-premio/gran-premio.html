@@ -1,1 +1,19 @@
-<p>gran-premio works!</p>
+<h2>{{ sessions[0].location }} - {{ sessions[0].year }}</h2>
+
+  <div class="sessions-grid">
+    @for (row of sessions; track $index) {
+      <div class="session-card">
+        <h3>{{ row.session_type }}</h3>
+        <div class="session-info">
+          <p><span>Data inizio:</span> {{ row.date_start | date: 'dd/MM/yyyy' }}</p>
+          <p><span>Data fine:</span> {{ row.date_end | date: 'dd/MM/yyyy' }}</p>
+          <p><span>Tipo:</span> {{ row.session_type }}</p>
+          <p><span>Località:</span> {{ row.location }}</p>
+          <p><span>Circuito:</span> {{ row.circuit_short_name }}</p>
+          <p><span>Fuso orario:</span> {{ row.gmt_offset }}</p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <a class="back-button" href="/gran-premi">← Torna ai Gran Premi</a>

@@ -1,0 +1,80 @@
+/* Contenitore principale */
+.gp-dettagli-container {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1000px;
+    background: #111;
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
+/* Titolo principale */
+.gp-dettagli-container h2 {
+    text-align: center;
+    border-bottom: 2px solid red;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+/* Griglia delle sessioni (FP, Qualifica, Gara, ecc.) */
+.sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Singola sessione */
+.session-card {
+    background: linear-gradient(to top right, rgba(255, 0, 0, 0.15), rgba(255, 0, 0, 0.05));
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effetto hover */
+.session-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(255, 0, 0, 0.4);
+}
+
+/* Titolo della sessione */
+.session-card h3 {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 0.5rem;
+}
+
+/* Informazioni */
+.session-info p {
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.session-info p span {
+    font-weight: bold;
+    color: #ff4444;
+}
+
+/* Pulsante o link di ritorno */
+.back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    background: red;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+    background: #ff5555;
+    transform: scale(1.05);
+}
