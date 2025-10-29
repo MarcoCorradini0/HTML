@@ -4,11 +4,11 @@
 
 @for (item of sessions; track $index) {
 <div class="card-wrapper">
-    <div class="card">
+    <div class="card card-detail">
         <h3>{{ item.session_type }}</h3>
         <h6>{{ item.date_start | date: 'dd/MM/yyyy' }} - {{ item.date_end | date: 'dd/MM/yyyy' }}</h6>
-        <span>Risultati:
-            <p-table [value]="item.results" [tableStyle]="{ 'min-width': '50rem' }">
+        <span>
+            <p-table [value]="item.results" [tableStyle]="{ 'max-width': '50rem' }">
                 <ng-template #header>
                     <tr>
                         <th>pos.</th>

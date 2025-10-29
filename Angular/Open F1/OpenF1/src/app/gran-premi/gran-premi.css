@@ -23,28 +23,6 @@ h1 {
 }
 
 /* Overlay */
-.card:hover::before {
-    content: "";
-    position: absolute;
-    inset: -4px;
-    border-radius: 14px;
-    padding: 2px;
-    background: conic-gradient(from 0deg,
-            rgba(255, 0, 0, 0.8),
-            rgba(255, 0, 0, 0) 20%,
-            rgba(255, 0, 0, 0.8) 40%,
-            rgba(255, 0, 0, 0) 60%,
-            rgba(255, 0, 0, 0.8) 80%,
-            rgba(255, 0, 0, 0) 100%);
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: card-lines 15s infinite;
-    z-index: 0;
-}
-
 .card {
     flex: 0 0 440px;
     /* Larghezza fissa */
@@ -61,6 +39,10 @@ h1 {
     text-align: justify;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.800), rgba(0, 0, 0, 0.450));
     transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-detail {
+    height: auto;
 }
 
 /* Hover */
