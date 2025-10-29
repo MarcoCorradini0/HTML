@@ -1,11 +1,20 @@
-.ySelector {
-  position: relative;
-  z-index: 10;
-  margin: 1rem;
-  display: flex;
-  justify-content: flex-start;
+.divisore {
+    display: flex;
 }
 
+.ySelector {
+    position: relative;
+    z-index: 10;
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header,
+h1 {
+    text-align: center;
+    margin: 1rem 0 0 0;
+}
 
 .card-wrapper {
     display: inline-flex;
@@ -13,7 +22,29 @@
     box-sizing: border-box;
 }
 
-/* Card fissa, tipo blocco, senza stiramenti */
+/* Overlay */
+.card:hover::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 14px;
+    padding: 2px;
+    background: conic-gradient(from 0deg,
+            rgba(255, 0, 0, 0.8),
+            rgba(255, 0, 0, 0) 20%,
+            rgba(255, 0, 0, 0.8) 40%,
+            rgba(255, 0, 0, 0) 60%,
+            rgba(255, 0, 0, 0.8) 80%,
+            rgba(255, 0, 0, 0) 100%);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: card-lines 15s infinite;
+    z-index: 0;
+}
+
 .card {
     flex: 0 0 440px;
     /* Larghezza fissa */
@@ -25,35 +56,44 @@
     padding: 1rem;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     justify-items: baseline;
     text-align: justify;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.25));
-    z-index: 1;
-}
-
-/* Overlay */
-.card::before {    
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.25));
-    z-index: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.800), rgba(0, 0, 0, 0.450));
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 /* Hover */
 .card:hover {
+    animation: card-shadow 4s infinite;
     transform: scale(1.03);
-    box-shadow: 0 12px 30px rgba(255, 0, 0, 0.5);
+}
+
+@keyframes card-shadow {
+  0%   { box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
+  50%  { box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); }
+  100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
+}
+
+@keyframes card-lines {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.card h3 {
+    width: 100%;
+    border-bottom: 1px solid white;
 }
 
 .dettagli {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    z-index: 1;
 }
 
-.card h3 {
-    width: 100%;
-    border-bottom: 1px solid white;
+@media (max-width: 575px) {
+    .card {
+        flex: 0 0 375px;
+    }
 }

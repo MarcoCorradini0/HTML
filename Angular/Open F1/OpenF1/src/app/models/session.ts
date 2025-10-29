@@ -1,3 +1,5 @@
+import { SessionResult } from "./session-result";
+
 export interface Session {
     meeting_key: number;
     session_key: number;
@@ -13,4 +15,5 @@ export interface Session {
     circuit_short_name: string;
     gmt_offset: string; // formato "HH:mm:ss"
     year: number;
+    results: SessionResult[];
 }

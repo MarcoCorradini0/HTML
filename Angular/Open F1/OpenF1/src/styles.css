@@ -127,6 +127,12 @@ h6 {
   border-radius: 8px;
   text-decoration: none;
   font-size: 0.9rem;
-  transition: transform .12s ease, box-shadow .12s ease;
-  box-shadow: 0 3px 8px rgba(225, 16, 0, 0.18);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.open-channel:hover span {
+    display: inline-block;
+    transform: translateX(-5px);
+    transition: transform 0.5s ease;
 }
