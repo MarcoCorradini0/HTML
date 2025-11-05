@@ -1,5 +1,4 @@
 .video-section {
-  background: var(--bg);
   padding: 1.5rem;
   color: var(--muted);
 }
@@ -12,6 +11,26 @@
   gap: 1rem;
   max-width: 1100px;
   margin: 0 auto;
+}
+
+.nav-button {
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 100%;
+  width: 44px;
+  height: 44px;
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background .12s ease, transform .12s ease;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+  background: rgba(255,255,255,0.09);
+  transform: scale(1.03);
+  outline: none;
 }
 
 /* card */
@@ -62,27 +81,6 @@
 
 /* actions */
 .team-actions { margin: 0; }
-
-/* navigation buttons */
-.nav-button {
-  background: rgba(255,255,255,0.04);
-  color: var(--text);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 999px;
-  width: 44px;
-  height: 44px;
-  display: inline-grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background .12s ease, transform .12s ease;
-}
-
-.nav-button:hover,
-.nav-button:focus {
-  background: rgba(255,255,255,0.09);
-  transform: scale(1.03);
-  outline: none;
-}
 
 /* indicators */
 .carousel-indicators {

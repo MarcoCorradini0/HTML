@@ -138,3 +138,48 @@ h6 {
     transition: transform 0.5s ease;
 }
 
+nav {
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(90deg, rgba(255,0,0,0.175), rgba(0, 0, 0, 0.1), rgba(255,0,0,0.175));
+    background-color: black;
+    box-shadow: 0 1px 24px red;
+    animation: nav-shadow 4s infinite ease-out;
+} @keyframes nav-shadow {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--nav-text);
+  padding: 0.5rem 1rem;
+  border-radius: var(--p-border-radius);
+  transition: background-color 0.2s;
+}
+
+.nav-links a.active {
+  background-color: var(--p-primary-color);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  background-color: var(--p-highlight-background);
+  color: var(--nav-hover);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: white;
+}
