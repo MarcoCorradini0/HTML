@@ -22,6 +22,10 @@ h1 {
     box-sizing: border-box;
 }
 
+.card-wrapper-detail {
+    display: grid;
+}
+
 /* Overlay */
 .card {
     flex: 0 0 300px;
@@ -42,7 +46,6 @@ h1 {
 }
 
 .card-detail{
-    flex: 0 0 500px;
     height: auto; 
 }
 

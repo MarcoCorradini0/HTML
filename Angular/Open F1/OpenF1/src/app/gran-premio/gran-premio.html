@@ -3,12 +3,12 @@
 </div>
 
 @for (item of sessions; track $index) {
-<div class="card-wrapper">
+<div class="card-wrapper card-wrapper-detail">
     <div class="card card-detail">
         <h3>{{ item.session_type }}</h3>
         <h6>{{ item.date_start | date: 'dd/MM/yyyy' }} - {{ item.date_end | date: 'dd/MM/yyyy' }}</h6>
         <span>
-            <p-table [value]="item.results" [tableStyle]="{ 'max-width': '50rem' }">
+            <p-table [value]="item.results" [tableStyle]="{ 'max-width': 'auto' }">
                 <ng-template #header>
                     <tr>
                         <th>POS.</th>
