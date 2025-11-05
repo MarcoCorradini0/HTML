@@ -19,9 +19,9 @@ export class Home implements OnInit {
   activeIndex = 0;
 
   teams: TeamChannel[] = [
+    { name: 'Ferrari', channelId: 'UCd8iY-kEHtaB8qt8MH--zGw' },            // @Ferrari
     { name: 'Red Bull Racing', channelId: 'UCXbQnPeM4qn4IIEwR0yvXEg' },    // @redbullracing
     { name: 'Mercedes-AMG F1', channelId: 'UCHmqpYhza6fKtzYYyYgJTGw' },    // @MercedesAMGF1
-    { name: 'Ferrari', channelId: 'UCd8iY-kEHtaB8qt8MH--zGw' },            // @Ferrari
     { name: 'McLaren', channelId: 'UC8NsMBYKqHFz8JvHNhD3k0g' },            // @McLaren
     { name: 'Aston Martin', channelId: 'UC6lcs8IwqMZrkB_5dzXXBQw' },       // @astonmartinf1team
     { name: 'Alpine F1 Team', channelId: 'UCPwy2q7BNjdLQFLNzeCWqmQ' },     // @alpinef1team74

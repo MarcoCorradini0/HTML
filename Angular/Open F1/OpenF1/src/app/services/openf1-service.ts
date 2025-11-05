@@ -4,6 +4,7 @@ import { Meeting } from '../models/meeting';
 import { firstValueFrom } from 'rxjs';
 import { Session } from '../models/session';
 import { SessionResult } from '../models/session-result';
+import { Driver } from '../models/driver';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ export class Openf1Service {
 
   async getSessionsResults(sessionKey: number): Promise<SessionResult[]> {
   const response$ = this.http.get<SessionResult[]>(`${this.baseUrl}/session_result?session_key=${sessionKey}`);
+  return firstValueFrom(response$);
+  }
+
+  async getDriversByNumber(sessionKey: number): Promise<Driver[]> {
+  const response$ = this.http.get<Driver[]>(`${this.baseUrl}/drivers?session_key=${sessionKey}`);
   return firstValueFrom(response$);
   }
 }
