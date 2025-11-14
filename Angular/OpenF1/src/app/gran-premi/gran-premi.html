@@ -1,0 +1,24 @@
+<section class="divisore">
+    <div>
+        <div class="ySelector">
+            <p-select [options]="years" [(ngModel)]="selectedYear" optionLabel="name" placeholder="Seleziona un anno"
+                class="w-full md:w-56" (ngModelChange)="loadMeetings()" />
+        </div>
+    </div>
+    <div>
+        @for (item of meetings; track $index) {
+        <div class="card-wrapper">
+            <div class="card">
+                <h3>{{ item.country_name }} - Circuit of {{ item.circuit_short_name }}</h3>
+                <h5>{{ item.meeting_official_name }}</h5>
+                <h6>{{ item.date_start | date: 'dd/MM/yyyy' }}</h6>
+                <div class="dettagli">
+                    <a class="open-channel" routerLink="/gran-premi/{{ item.meeting_key }}">
+                        <span>Dettagli--></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</section>

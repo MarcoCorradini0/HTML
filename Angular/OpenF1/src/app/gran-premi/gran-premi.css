@@ -1,0 +1,110 @@
+.divisore {
+    display: flex;
+}
+
+.ySelector {
+    position: relative;
+    z-index: 10;
+    margin: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.header,
+h1 {
+    text-align: center;
+    margin: 1rem 0 0 0;
+}
+
+.card-wrapper {
+    display: inline-flex;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.card-wrapper-detail {
+    display: grid;
+}
+
+/* Overlay */
+.card {
+    flex: 0 0 300px;
+    /* Larghezza fissa */
+    height: 310px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    justify-items: baseline;
+    text-align: justify;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.800), rgba(0, 0, 0, 0.450));
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-detail{
+    height: auto; 
+}
+
+/* Hover */
+.card:hover {
+    animation: card-shadow 4s infinite;
+    transform: scale(1.03);
+}
+
+@keyframes card-shadow {
+  0%   { box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
+  50%  { box-shadow: 0 0 20px rgba(255, 0, 0, 0.7); }
+  100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
+}
+
+.card h3 {
+    width: 100%;
+    border-bottom: 1px solid white;
+}
+
+.dettagli {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1;
+}
+
+@media (max-width: 1431px) {
+    .card {
+        flex: 0 0 375px;
+    }
+}
+
+@media (max-width: 1322px) {
+    .card {
+        flex: 0 0 300px;
+    }
+}
+
+@media (max-width: 1097px) {
+    .card {
+        flex: 0 0 375px;
+    }
+}
+
+@media (max-width: 914px) {
+    .card {
+        flex: 0 0 350px;
+    }
+}
+
+@media (max-width: 867px) {
+    .card {
+        flex: 0 0 300px;
+    }
+}
+
+@media (max-width: 767px) {
+    .card {
+        flex: 0 0 250px;
+    }
+}

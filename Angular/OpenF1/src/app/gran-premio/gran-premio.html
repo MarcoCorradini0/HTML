@@ -1,0 +1,65 @@
+<div class="header">
+    <h1>{{ sessions[0].location }} - {{ sessions[0].year }}</h1>
+</div>
+
+@for (item of sessions; track $index) {
+<div class="card-wrapper card-wrapper-detail">
+    <div class="card card-detail">
+        <h3>{{ item.session_type }}</h3>
+        <h6>{{ item.date_start | date: 'dd/MM/yyyy' }} - {{ item.date_end | date: 'dd/MM/yyyy' }}</h6>
+        <span>
+            <p-table [value]="item.results" [tableStyle]="{ 'max-width': 'auto' }">
+                <ng-template #header>
+                    <tr>
+                        <th>POS.</th>
+                        <th>NUM.</th>
+                        <th>DRIVER</th>
+                        <th>TEAM</th>
+                        @if (item.session_name === 'Qualifing') {
+                            <th>Q1</th>
+                            <th>Q2</th>
+                            <th>Q3</th>
+                        }@else {
+                            <th>GAP</th>
+                        }
+                        <th>LAPS</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-result>
+                    <tr>
+                        <td>{{ result.position }}</td>
+                        <td>{{ result.driver_number }}</td>
+                        <td>{{getDriversByNumber(item.drivers, result.driver_number).full_name}}</td>
+                        <td>{{getDriversByNumber(item.drivers, result.driver_number).team_name}}</td>
+                        @if (item.session_name === 'Qualifing') {
+                            @if (result.position === 1) {
+                                <td>{{result.duration[0]}}</td>
+                                <td>{{result.duration[1]}}</td>
+                                <td>{{result.duration[2]}}</td>
+                            }
+                            @else {
+                                <td>+{{result.gap_to_leader[0]}}s</td>
+                                <td>+{{result.gap_to_leader[1]}}s</td>
+                                <td>+{{result.gap_to_leader[2]}}s</td>
+                            }
+                        }@else {
+                            @if(result.position === 1) {
+                                <td>{{result.duration}}</td>
+                            }@else {
+                                <td>+{{result.gap_to_leader}}s</td>
+                            }
+                        }
+                        <td>{{result.number_of_laps}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </span>
+    </div>
+</div>
+}
+
+<div style="margin: 2rem;">
+    <a class="open-channel" href="/gran-premi">
+        <span><--Torna ai Gran premi</span>
+    </a>
+</div>
