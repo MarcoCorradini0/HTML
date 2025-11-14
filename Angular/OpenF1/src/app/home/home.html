@@ -6,21 +6,18 @@
 
     <div class="video-card">
       <div class="video-wrapper" aria-hidden="false">
-        <iframe *ngIf="teams[activeIndex]?.playlistUrl"
-                [src]="teams[activeIndex].playlistUrl"
-                [title]="teams[activeIndex].name + ' uploads'"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
+        <iframe *ngIf="teams[activeIndex]?.playlistUrl" [src]="teams[activeIndex].playlistUrl"
+          [title]="teams[activeIndex].name + ' uploads'" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
         </iframe>
       </div>
 
       <div class="video-meta">
         <h3 class="team-name">{{ teams[activeIndex].name }}</h3>
         <p class="team-actions">
-          <a class="open-channel" 
-             [href]="'https://www.youtube.com/channel/' + teams[activeIndex].channelId + '/videos'"
-             target="_blank" rel="noopener noreferrer">
+          <a class="open-channel" [href]="'https://www.youtube.com/channel/' + teams[activeIndex].channelId + '/videos'"
+            target="_blank" rel="noopener noreferrer">
             Apri su YouTube
           </a>
         </p>
@@ -34,12 +31,8 @@
 
   <ul class="carousel-indicators" role="tablist" aria-label="Teams">
     <li *ngFor="let t of teams; let i = index" role="presentation">
-      <button
-        role="tab"
-        [attr.aria-selected]="i === activeIndex"
-        (click)="activeIndex = i"
-        [class.active]="i === activeIndex"
-        [attr.aria-label]="'Visualizza ' + t.name">
+      <button role="tab" [attr.aria-selected]="i === activeIndex" (click)="activeIndex = i"
+        [class.active]="i === activeIndex" [attr.aria-label]="'Visualizza ' + t.name">
         {{ t.name }}
       </button>
     </li>
