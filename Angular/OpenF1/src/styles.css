@@ -1,0 +1,185 @@
+@import 'primeicons/primeicons.css';
+
+:root {
+  --font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --text: #0f1720;
+  --muted: #6b7280;
+  --accent: #e10600;
+  --shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+  --nav-bg: #222;
+  --nav-text: white;
+  --nav-border: var(--p-content-border-color);
+  --nav-hover: crimson;
+}
+
+.dark {
+  --bg: #0f1720;
+  --card: rgba(255, 255, 255, 0.02);
+  --text: #ffffff;
+  --muted: #9ca3af;
+  --accent: #e10600;
+  --shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color .18s ease, color .18s ease;
+}
+
+.p-component {
+  font-family: var(--font-family) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 1rem 0;
+  color: var(--text);
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+/* Common Components */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  text-align: center;
+}
+
+/* Video Components */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.open-channel {
+  display: inline-block;
+  padding: 0.4rem 0.75rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.open-channel:hover span {
+    display: inline-block;
+    transform: translateX(-5px);
+    transition: transform 0.5s ease;
+}
+
+nav {
+    gap: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(90deg, rgba(255,0,0,0.175), rgba(0, 0, 0, 0.1), rgba(255,0,0,0.175));
+    background-color: black;
+    box-shadow: 0 1px 24px red;
+    animation: nav-shadow 4s infinite ease-out;
+} @keyframes nav-shadow {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--nav-text);
+  padding: 0.5rem 1rem;
+  border-radius: var(--p-border-radius);
+  transition: background-color 0.2s;
+}
+
+.nav-links a.active {
+  background-color: var(--p-primary-color);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  background-color: var(--p-highlight-background);
+  color: var(--nav-hover);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: white;
+}
