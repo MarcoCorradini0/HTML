@@ -14,23 +14,17 @@
 }
 
 .nav-button {
-  background: rgba(255,255,255,0.04);
-  color: var(--text);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 100%;
-  width: 44px;
-  height: 44px;
-  display: inline-grid;
+  background: none;
+  border: none;
   place-items: center;
   cursor: pointer;
-  transition: background .12s ease, transform .12s ease;
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-button:hover,
-.nav-button:focus {
-  background: rgba(255,255,255,0.09);
-  transform: scale(1.03);
-  outline: none;
+.nav-button:hover {
+  transform: scale(1.5);
 }
 
 /* card */
