@@ -1,53 +1,52 @@
 <section class="video-section" role="region" aria-label="F1 teams video carousel">
   <div class="carousel" aria-live="polite">
 
-    <!-- PREVIOUS TEAM -->
-    <button class="nav-button prev" (click)="previousTeam()" aria-label="Previous team">
-      <span aria-hidden="true">◀</span>
-    </button>
-
-    <!-- VIDEO CARD -->
     <div class="video-card">
-      <div class="video-wrapper">
-        <iframe *ngIf="videos.length > 0" [src]="videos[activeVideoIndex].videoUrl" class="video-iframe"
-          [title]="videos[activeVideoIndex].title" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+      <div class="video-player">
+        <div class="button-wrapper">
+          <button class="nav-button" (click)="previousVideo()" aria-label="Previous video">
+            ◀
+          </button>
+        </div>
+
+        <div class="video-wrapper">
+          <ng-container *ngIf="loading">Loading...</ng-container>
+          <ng-container *ngIf="!loading && videos.length > 0">
+            <ng-container *ngIf="!videos[activeVideoIndex].error; else errorTpl">
+              <iframe [src]="videos[activeVideoIndex].videoUrl" [title]="videos[activeVideoIndex].title" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </ng-container>
+            <ng-template #errorTpl>
+              <div style="color: gray; text-align: center;">
+                {{ videos[activeVideoIndex].title }}<br />
+                {{ videos[activeVideoIndex].error }}
+              </div>
+            </ng-template>
+          </ng-container>
+        </div>
+
+        <div class="button-wrapper">
+          <button class="nav-button" (click)="nextVideo()" aria-label="Next video">
+            ▶
+          </button>
+        </div>
       </div>
 
       <div class="video-meta">
+        <button class="nav-button" (click)="previousTeam()" aria-label="Previous team">◀</button>
         <h3 class="team-name">{{ teams[activeTeamIndex].name }}</h3>
-
-        <!-- PREVIOUS VIDEO -->
-        <div>
-          <button class="nav-button prev" (click)="previousVideo()" aria-label="Previous video">
-            <span>◀</span>
-          </button>
-        </div>
-
-        <a class="open-channel"
-          [href]="'https://www.youtube.com/channel/' + teams[activeTeamIndex].channelId + '/videos'" target="_blank"
-          rel="noopener noreferrer">
-          <span>Apri su YouTube</span>
-        </a>
-
-        <!-- NEXT VIDEO -->
-        <div>
-          <button class="nav-button next" (click)="nextVideo()" aria-label="Next video">
-            <span>▶</span>
-          </button>
-        </div>
+        <button class="nav-button" (click)="nextTeam()" aria-label="Next team">▶</button>
       </div>
-    </div>
 
-    <!-- NEXT TEAM -->
-    <button class="nav-button next" (click)="nextTeam()" aria-label="Next team">
-      <span aria-hidden="true">▶</span>
-    </button>
+      <a class="open-channel" [href]="'https://www.youtube.com/channel/' + teams[activeTeamIndex].channelId + '/videos'"
+        target="_blank" rel="noopener noreferrer">
+        Apri su YouTube
+      </a>
+    </div>
   </div>
 
-  <!-- TEAM INDICATORS -->
   <ul class="carousel-indicators" role="tablist" aria-label="Teams">
     <li *ngFor="let t of teams; let i = index" role="presentation">
       <button role="tab" [class.active]="i === activeTeamIndex" [attr.aria-selected]="i === activeTeamIndex"

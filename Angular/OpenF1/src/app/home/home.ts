@@ -11,7 +11,8 @@ interface TeamChannel {
 
 interface Video {
   title: string;
-  videoUrl: SafeResourceUrl;
+  videoUrl?: SafeResourceUrl;
+  error?: string;
 }
 
 @Component({
@@ -28,10 +29,18 @@ export class HomeComponent implements OnInit {
   teams: TeamChannel[] = [
     { name: 'Ferrari', channelId: 'UCd8iY-kEHtaB8qt8MH--zGw' },
     { name: 'Marco Corradini', channelId: 'UCvYUADghIQFP1wNj0IzJufA' },
-    { name: 'Mercedes-AMG F1', channelId: 'UCHmqpYhza6fKtzYYyYgJTGw' }
+    { name: 'Mercedes-AMG F1', channelId: 'UCHmqpYhza6fKtzYYyYgJTGw' },
+    { name: 'McLaren', channelId: 'UC8NsMBYKqHFz8JvHNhD3k0g' },
+    { name: 'Aston Martin', channelId: 'UC6lcs8IwqMZrkB_5dzXXBQw' },
+    { name: 'Alpine F1 Team', channelId: 'UCPwy2q7BNjdLQFLNzeCWqmQ' },
+    { name: 'Williams Racing', channelId: 'UCxJ_nd6Mn6eXIO3ZrUARVSw' },
+    { name: 'Red Bull Racing', channelId: 'UCwFUo5jJhN_qA49DB00bADQ' },
+    { name: 'Haas F1 Team', channelId: 'UC6Cn5_OKxqPt_CZHNJOxBAA' },
+    { name: 'Alfa Romeo F1 Team', channelId: 'UCj2p1RSH8xK_9f8ZsQS3eAg' }
   ];
 
   videos: Video[] = [];
+  loading = false;
   private API_KEY = environment.YOUTUBE_API_KEY;
 
   constructor(private sanitizer: DomSanitizer, private http: HttpClient) { }
@@ -41,17 +50,37 @@ export class HomeComponent implements OnInit {
   }
 
   loadVideos(channelId: string) {
-    const url = `https://www.googleapis.com/youtube/v3/search?key=${this.API_KEY}&channelId=${channelId}&part=snippet,id&order=date&maxResults=10`;
-    this.http.get<any>(url).subscribe((res) => {
-      this.videos = res.items
-        .filter((item: any) => item.id.videoId)
-        .map((item: any) => ({
-          title: item.snippet.title,
-          videoUrl: this.sanitizer.bypassSecurityTrustResourceUrl(
-            `https://www.youtube.com/embed/${item.id.videoId}`
-          ),
-        }));
-      this.activeVideoIndex = 0;
+    this.loading = true;
+    this.videos = [];
+
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${this.API_KEY}` +
+      `&channelId=${channelId}` +
+      `&part=snippet,id` +
+      `&order=date` +
+      `&maxResults=10&type=video`;
+
+    this.http.get<any>(url).subscribe({
+      next: (res) => {
+        if (!res.items || res.items.length === 0) {
+          this.videos = [{ title: 'Errore: nessun video trovato', error: 'Nessun video disponibile' }];
+        } else {
+          this.videos = res.items.map((item: any) => {
+            const videoId = item.id.videoId;
+            return {
+              title: item.snippet.title,
+              videoUrl: this.sanitizer.bypassSecurityTrustResourceUrl(
+                `https://www.youtube.com/embed/${videoId}`
+              )
+            };
+          });
+        }
+        this.activeVideoIndex = 0;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.videos = [{ title: 'Errore durante il caricamento', error: err.message }];
+        this.loading = false;
+      }
     });
   }
 
