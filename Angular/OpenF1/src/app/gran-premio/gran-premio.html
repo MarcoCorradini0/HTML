@@ -1,106 +1,75 @@
 <div class="header">
-    <h1>{{ sessions[0].location }} - {{ sessions[0].year }}</h1>
+    <h1>{{ sessions[0]?.location }} - {{ sessions[0]?.year }}</h1>
 </div>
 
-@for (item of sessions; track $index) {
-
-<div class="card-wrapper card-wrapper-detail">
-    <div class="card card-detail">
-
-        <h3>{{ item.session_type }}</h3>
-        <h6>{{ item.date_start | date: 'dd/MM/yyyy' }} - {{ item.date_end | date: 'dd/MM/yyyy' }}</h6>
-
-        <span>
-            <p-table [value]="item.results" [tableStyle]="{ 'max-width': 'auto' }">
-
-                <!-- HEADER -->
-                <ng-template #header>
-                    <tr>
-                        <th>POS.</th>
-                        <th></th>
-                        <th>DRIVER</th>
-                        <th>TEAM</th>
-
-                        @if (item.session_name === 'Qualifing') {
-                        <th>Q1</th>
-                        <th>Q2</th>
-                        <th>Q3</th>
-                        } @else {
-                        <th>GAP</th>
-                        }
-
-                        <th>LAPS</th>
-                    </tr>
-                </ng-template>
-
-                <!-- BODY -->
-                <ng-template #body let-result>
-
-                    <tr class="team-row" [ngClass]="{
-                            'rank-1': result.position === 1,
-                            'rank-2': result.position === 2,
-                            'rank-3': result.position === 3
-                        }" [ngStyle]="getTeamStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
-
-                        <!-- POS -->
-                        <td>{{ result.position }}</td>
-
-                        <!-- LOGO TEAM -->
-                        <td>
-                            <img *ngIf="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
-                                class="team-logo"
-                                [src]="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
-                                [alt]="getDriversByNumber(item.drivers, result.driver_number)?.team_name">
-                        </td>
-
-                        <!-- DRIVER CELL (flag + name + number) -->
-                        <td class="driver-cell">
-                            <img *ngIf="getDriverFlag(getDriversByNumber(item.drivers, result.driver_number))"
-                                class="flag"
-                                [src]="getDriverFlag(getDriversByNumber(item.drivers, result.driver_number))"
-                                [alt]="getDriversByNumber(item.drivers, result.driver_number)?.full_name">
-                            <div class="driver-info">
-                                <span class="driver-name">
-                                    {{ getDriversByNumber(item.drivers, result.driver_number).full_name }}
-                                </span>
-                                <span class="driver-num">#{{ result.driver_number }}</span>
-                            </div>
-                        </td>
-
-                        <!-- TEAM -->
-                        <td [ngStyle]="getTeamStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
-                            {{ getDriversByNumber(item.drivers, result.driver_number).team_name }}
-                        </td>
-
-                        <!-- QUALIFYING TIMES -->
-                        @if (item.session_name === 'Qualifing') {
-                        <td *ngFor="let t of formatQualifyingTimes(result.duration)">
-                            {{ t }}
-                        </td>
-                        } @else {
-                        <td>
-                            @if (result.position === 1) {
-                            {{ result.duration }}
-                            } @else {
-                            {{ formatGap(result.gap_to_leader) }}
-                            }
-                        </td>
-                        }
-
-                        <!-- LAPS / DNF -->
-                        <td>{{ getStatus(result) }}</td>
-
-                    </tr>
-                </ng-template>
-
-            </p-table>
-        </span>
-
+<div *ngFor="let item of sessions; let i = index">
+    <div class="card-wrapper card-wrapper-detail">
+        <div class="card card-detail">
+            <h3>
+                {{ item.session_name }} <br>
+                <h6>
+                    {{ item.date_start | date: 'dd/MM/yyyy' }} - {{ item.date_end | date: 'dd/MM/yyyy' }}
+                </h6>
+            </h3>
+            <span>
+                <p-table [value]="item.results" [tableStyle]="{ 'max-width': 'auto' }">
+                    <!-- HEADER -->
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>POS.</th>
+                            <th>DRIVER</th>
+                            <th>TEAM</th>
+                            <th *ngIf="item.session_name === 'Qualifying'">Q1</th>
+                            <th *ngIf="item.session_name === 'Qualifying'">Q2</th>
+                            <th *ngIf="item.session_name === 'Qualifying'">Q3</th>
+                            <th *ngIf="item.session_name !== 'Qualifying'">GAP</th>
+                            <th>LAPS</th>
+                        </tr>
+                    </ng-template>
+                    <!-- BODY -->
+                    <ng-template pTemplate="body" let-result>
+                        <tr class="team-row" [ngClass]="{
+                                'rank-1': result.position === 1,
+                                'rank-2': result.position === 2,
+                                'rank-3': result.position === 3
+                            }">
+                            <!-- POS -->
+                            <td>{{ result.position }}</td>
+                            <!-- DRIVER CELL (flag + name + number) -->
+                            <td [ngStyle]="getDispenseR(getDriversByNumber(item.drivers, result.driver_number)?.team_name, true)">
+                                <img *ngIf="getDriverFlag(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
+                                    class="flag"
+                                    [src]="getDriverFlag(getDriversByNumber(item.drivers, result.driver_number)?.full_name)">
+                                {{ getDriversByNumber(item.drivers, result.driver_number)?.full_name }}
+                                #{{ result.driver_number }}
+                            </td>
+                            <!-- TEAM -->
+                            <td [ngStyle]="getDispenseR(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                                <img *ngIf="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
+                                    class="team-logo"
+                                    [src]="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                                {{ getDriversByNumber(item.drivers, result.driver_number)?.team_name }}
+                            </td>
+                            <!-- QUALIFYING TIMES -->
+                            <ng-container
+                                *ngIf="item.session_name === 'Qualifying' || item.session_name === 'Sprint Qualifying'">
+                                <td>{{ result.q1_time || '—' }}</td>
+                                <td>{{ result.q2_time || '—' }}</td>
+                                <td>{{ result.q3_time || '—' }}</td>
+                            </ng-container>
+                            <!-- GAP (NON QUALIFYING) -->
+                            <td *ngIf="item.session_name !== 'Qualifying' && item.session_name !== 'Sprint Qualifying'">
+                                {{ formatGap(result.gap_to_leader) }}
+                            </td>
+                            <!-- LAPS / DNF -->
+                            <td>{{ getStatus(result) }}</td>
+                            </tr>
+                    </ng-template>
+                </p-table>
+            </span>
+        </div>
     </div>
 </div>
-
-}
-
 <div style="margin: 2rem;">
     <a class="open-channel" href="/gran-premi">
         <span><-- Torna ai Gran premi</span>

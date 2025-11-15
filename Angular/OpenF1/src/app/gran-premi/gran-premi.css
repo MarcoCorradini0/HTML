@@ -137,39 +137,10 @@ h1 {
 /* =============================
    Logo team + bandiera pilota
    ============================= */
-.team-logo {
+.team-logo, .flag {
     width: 32px;
     height: 32px;
     object-fit: contain;
-}
-
-.flag {
-    width: 24px;
-    height: 18px;
-    margin-right: 6px;
-    border-radius: 2px;
-}
-
-/* =============================
-   Mini-card stile F1 TV
-   ============================= */
-.driver-cell {
-    align-items: center;
-    gap: 8px;
-}
-
-.driver-info {
-    line-height: 1.1;
-}
-
-.driver-name {
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.driver-num {
-    font-size: 0.8rem;
-    opacity: 0.7;
 }
 
 /* =============================
