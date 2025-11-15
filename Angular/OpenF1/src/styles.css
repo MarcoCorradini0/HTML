@@ -54,6 +54,10 @@ body {
   font-family: var(--font-family) !important;
 }
 
+.p-datatable tbody tr td {
+    vertical-align: middle;
+}
+
 h1,
 h2,
 h3,

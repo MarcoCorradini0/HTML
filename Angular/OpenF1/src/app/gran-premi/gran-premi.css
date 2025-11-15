@@ -1,7 +1,6 @@
-.divisore {
-    display: flex;
-}
-
+/* =============================
+   Selettore Y
+   ============================= */
 .ySelector {
     position: relative;
     z-index: 10;
@@ -10,12 +9,18 @@
     justify-content: flex-start;
 }
 
+/* =============================
+   Header e titoli
+   ============================= */
 .header,
 h1 {
     text-align: center;
     margin: 1rem 0 0 0;
 }
 
+/* =============================
+   Card Wrapper
+   ============================= */
 .card-wrapper {
     display: inline-flex;
     padding: 1rem;
@@ -26,10 +31,11 @@ h1 {
     display: grid;
 }
 
-/* Overlay */
+/* =============================
+   Card principale
+   ============================= */
 .card {
     flex: 0 0 300px;
-    /* Larghezza fissa */
     height: 310px;
     background-size: cover;
     background-position: center;
@@ -45,11 +51,15 @@ h1 {
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-.card-detail{
+.card-detail {
+    width: 95%;
+    justify-self: center;
     height: auto; 
 }
 
-/* Hover */
+/* =============================
+   Hover & Animazioni
+   ============================= */
 .card:hover {
     animation: card-shadow 4s infinite;
     transform: scale(1.03);
@@ -61,11 +71,13 @@ h1 {
   100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.2); }
 }
 
+/* Titolo card */
 .card h3 {
     width: 100%;
     border-bottom: 1px solid white;
 }
 
+/* Overlay dettagli */
 .dettagli {
     position: absolute;
     bottom: 1rem;
@@ -73,38 +85,97 @@ h1 {
     z-index: 1;
 }
 
-@media (max-width: 1431px) {
-    .card {
-        flex: 0 0 375px;
-    }
+/* =============================
+   Responsive Cards
+   ============================= */
+@media (max-width: 1431px) { .card { flex: 0 0 375px; } }
+@media (max-width: 1322px) { .card { flex: 0 0 300px; } }
+@media (max-width: 1097px) { .card { flex: 0 0 375px; } }
+@media (max-width: 914px) { .card { flex: 0 0 350px; } }
+@media (max-width: 867px) { .card { flex: 0 0 300px; } }
+@media (max-width: 767px) { .card { flex: 0 0 250px; } }
+
+/* =============================
+   Podio Animato
+   ============================= */
+.rank-1 td:first-child {
+    color: #FFD700 !important;
+    font-weight: 900;
+    animation: pulseGold 2s infinite ease-in-out;
 }
 
-@media (max-width: 1322px) {
-    .card {
-        flex: 0 0 300px;
-    }
+.rank-2 td:first-child {
+    color: #C0C0C0 !important;
+    font-weight: 900;
+    animation: pulseSilver 2s infinite ease-in-out;
 }
 
-@media (max-width: 1097px) {
-    .card {
-        flex: 0 0 375px;
-    }
+.rank-3 td:first-child {
+    color: #CD7F32 !important;
+    font-weight: 900;
+    animation: pulseBronze 2s infinite ease-in-out;
 }
 
-@media (max-width: 914px) {
-    .card {
-        flex: 0 0 350px;
-    }
+@keyframes pulseGold {
+  0% { text-shadow: 0 0 2px #ffea80; }
+  50% { text-shadow: 0 0 10px #FFD700; }
+  100% { text-shadow: 0 0 2px #ffea80; }
 }
 
-@media (max-width: 867px) {
-    .card {
-        flex: 0 0 300px;
-    }
+@keyframes pulseSilver {
+  0% { text-shadow: 0 0 2px #e6e6e6; }
+  50% { text-shadow: 0 0 10px #C0C0C0; }
+  100% { text-shadow: 0 0 2px #e6e6e6; }
 }
 
-@media (max-width: 767px) {
-    .card {
-        flex: 0 0 250px;
-    }
+@keyframes pulseBronze {
+  0% { text-shadow: 0 0 2px #ffb07c; }
+  50% { text-shadow: 0 0 10px #CD7F32; }
+  100% { text-shadow: 0 0 2px #ffb07c; }
+}
+
+/* =============================
+   Logo team + bandiera pilota
+   ============================= */
+.team-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.flag {
+    width: 24px;
+    height: 18px;
+    margin-right: 6px;
+    border-radius: 2px;
+}
+
+/* =============================
+   Mini-card stile F1 TV
+   ============================= */
+.driver-cell {
+    align-items: center;
+    gap: 8px;
+}
+
+.driver-info {
+    line-height: 1.1;
+}
+
+.driver-name {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.driver-num {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* =============================
+   Tabelle: centrate verticalmente
+   ============================= */
+p-table td, p-table th {
+    vertical-align: middle;
+    padding: 0.5rem 0.75rem;
 }
