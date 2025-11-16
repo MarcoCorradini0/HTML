@@ -37,8 +37,6 @@ h1 {
 .card {
     flex: 0 0 300px;
     height: 310px;
-    background-size: cover;
-    background-position: center;
     border-radius: 12px;
     color: white;
     padding: 1rem;
@@ -47,7 +45,9 @@ h1 {
     overflow: hidden;
     justify-items: baseline;
     text-align: justify;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.800), rgba(0, 0, 0, 0.450));
+    background-size: cover;
+    background-position: center;
+    background: rgba(0, 0, 0, 0.3);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -73,8 +73,7 @@ h1 {
 
 /* Titolo card */
 .card h3 {
-    width: 100%;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 /* Overlay dettagli */
@@ -88,12 +87,11 @@ h1 {
 /* =============================
    Responsive Cards
    ============================= */
-@media (max-width: 1431px) { .card { flex: 0 0 375px; } }
-@media (max-width: 1322px) { .card { flex: 0 0 300px; } }
-@media (max-width: 1097px) { .card { flex: 0 0 375px; } }
-@media (max-width: 914px) { .card { flex: 0 0 350px; } }
-@media (max-width: 867px) { .card { flex: 0 0 300px; } }
-@media (max-width: 767px) { .card { flex: 0 0 250px; } }
+@media (max-width: 1400px) { .card { flex-basis: 360px; } }
+@media (max-width: 1200px) { .card { flex-basis: 320px; } }
+@media (max-width: 992px) { .card { flex-basis: 300px; } }
+@media (max-width: 768px) { .card { flex-basis: 260px; } }
+@media (max-width: 576px) { .card { flex-basis: 220px; } }
 
 /* =============================
    Podio Animato
@@ -135,18 +133,37 @@ h1 {
 }
 
 /* =============================
-   Logo team + bandiera pilota
+   Team + pilot
    ============================= */
-.team-logo, .flag {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
+.team-logo,
+.pilot-flag {
+    width: 30px;
+    height: auto;
+}
+
+.team-car {
+    display: block;
+    vertical-align: -webkit-baseline-middle;
+    width: 250px;
+    height: auto;
+}
+
+.td-wrapper{
+    width: 24%;
+}
+
+.pilot {
+    width: 140px;         
+    height: 100px;        
+    object-fit: cover;    
+    object-position: top; 
 }
 
 /* =============================
    Tabelle: centrate verticalmente
    ============================= */
-p-table td, p-table th {
+p-table ::ng-deep td,
+p-table ::ng-deep th {
     vertical-align: middle;
     padding: 0.5rem 0.75rem;
 }

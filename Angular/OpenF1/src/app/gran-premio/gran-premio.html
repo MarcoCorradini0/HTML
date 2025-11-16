@@ -32,23 +32,38 @@
                                 'rank-1': result.position === 1,
                                 'rank-2': result.position === 2,
                                 'rank-3': result.position === 3
-                            }">
+                            }"[ngStyle]="getStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
                             <!-- POS -->
                             <td>{{ result.position }}</td>
                             <!-- DRIVER CELL (flag + name + number) -->
-                            <td [ngStyle]="getDispenseR(getDriversByNumber(item.drivers, result.driver_number)?.team_name, true)">
-                                <img *ngIf="getDriverFlag(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
-                                    class="flag"
-                                    [src]="getDriverFlag(getDriversByNumber(item.drivers, result.driver_number)?.full_name)">
+                            <td class="td-wrapper" [ngStyle]="getStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                                <span>
+                                    <img *ngIf="getPilotFlag(getDriversByNumber(item.drivers, result.driver_number)?.full_name)"
+                                        class="pilot-flag"
+                                        [src]="getPilotFlag(getDriversByNumber(item.drivers, result.driver_number)?.full_name)">
+                                </span>
                                 {{ getDriversByNumber(item.drivers, result.driver_number)?.full_name }}
                                 #{{ result.driver_number }}
+                                <span [ngStyle]="getStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name, true)">
+                                    <img *ngIf="getPilotImage(getDriversByNumber(item.drivers, result.driver_number)?.full_name)"
+                                        class="pilot"
+                                        [src]="getPilotImage(getDriversByNumber(item.drivers, result.driver_number)?.full_name)">
+                                </span>
                             </td>
                             <!-- TEAM -->
-                            <td [ngStyle]="getDispenseR(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
-                                <img *ngIf="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
-                                    class="team-logo"
-                                    [src]="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                            <td class="td-wrapper" [ngStyle]="getStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                                <span
+                                    [ngStyle]="getStyle(getDriversByNumber(item.drivers, result.driver_number)?.team_name, true)">
+                                    <img *ngIf="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
+                                        class="team-logo"
+                                        [src]="getTeamLogo(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                                </span>
                                 {{ getDriversByNumber(item.drivers, result.driver_number)?.team_name }}
+                                <span>
+                                    <img *ngIf="getTeamCar(getDriversByNumber(item.drivers, result.driver_number)?.team_name)"
+                                        class="team-car"
+                                        [src]="getTeamCar(getDriversByNumber(item.drivers, result.driver_number)?.team_name)">
+                                </span>
                             </td>
                             <!-- QUALIFYING TIMES -->
                             <ng-container
@@ -63,7 +78,7 @@
                             </td>
                             <!-- LAPS / DNF -->
                             <td>{{ getStatus(result) }}</td>
-                            </tr>
+                        </tr>
                     </ng-template>
                 </p-table>
             </span>
