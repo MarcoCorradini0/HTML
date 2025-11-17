@@ -59,41 +59,39 @@ export class GranPremio {
     'Franco Colapinto': { flag: '/flags/br.png', pilot: 'https://media.formula1.com/image/upload/c_lfill,w_440/q_auto/d_common:f1:2025:fallback:driver:2025fallbackdriverright.webp/v1740000000/common/f1/2025/alpine/fracol01/2025alpinefracol01right.webp' }
   };
 
-  /*
-  sponsors
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aramco.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aws.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-crypto.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-DHL.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Heineken.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Lenovo.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-LVMH.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-MSC.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Pirelli.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Qatar%20Airways.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-salesforce.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-allwyn.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-American%20Express.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Barilla.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Globant.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Las%20Vegas.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Liqui%20Moly.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Louis%20Vuitton.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Moet.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Nestle.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Paramount.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-PepsiCo.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-pwc.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Santander.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-TAG.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-McDonalds.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aggreko.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-BBS.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Puma.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-TATA.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aramco.webp
-    https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Fanatec.webp
-  */
+  dispenserSponsors: any = {
+    'Aramco': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aramco.webp' },
+    'AWS': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aws.webp' },
+    'Crypto': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-crypto.webp' },
+    'DHL': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-DHL.webp' },
+    'Heineken': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Heineken.webp' },
+    'Lenovo': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Lenovo.webp' },
+    'LVMH': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-LVMH.webp' },
+    'MSC': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-MSC.webp' },
+    'Pirelli': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Pirelli.webp' },
+    'Qatar Airways': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Qatar%20Airways.webp' },
+    'Salesforce': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-salesforce.webp' },
+    'Allwyn': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-allwyn.webp' },
+    'American Express': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-American%20Express.webp' },
+    'Barilla': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Barilla.webp' },
+    'Globant': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Globant.webp' },
+    'Las Vegas': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Las%20Vegas.webp' },
+    'Liqui Moly': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Liqui%20Moly.webp' },
+    'Louis Vuitton': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Louis%20Vuitton.webp' },
+    'Moet': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Moet.webp' },
+    'Nestle': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Nestle.webp' },
+    'Paramount': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Paramount.webp' },
+    'PepsiCo': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-PepsiCo.webp' },
+    'PwC': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-pwc.webp' },
+    'Santander': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Santander.webp' },
+    'TAG': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-TAG.webp' },
+    'McDonald\'s': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-McDonalds.webp' },
+    'Aggreko': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-aggreko.webp' },
+    'BBS': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-BBS.webp' },
+    'Puma': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Puma.webp' },
+    'TATA': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-TATA.webp' },
+    'Fanatec': { sponsor: 'https://media.formula1.com/image/upload/c_lfill,w_3392/q_auto/v1740000000/fom-website/manual/Misc/PartnersPage/2025%20RD/700x300-Fanatec.webp' }
+  };
 
   /* INIT */
   async ngOnInit() {
