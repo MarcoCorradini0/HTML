@@ -1,0 +1,179 @@
+/* 🌟 STILE VINTAGE ANNI '90 🌟 */
+
+body {
+  background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  font-family: 'Comic Sans MS', 'Arial', cursive;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.main {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 5px solid #000000;
+  box-shadow: 10px 10px 0px #ff00ff, 15px 15px 0px #00ffff;
+  padding: 30px;
+}
+
+h1 {
+  color: #ff0000;
+  text-align: center;
+  font-size: 36px;
+  text-shadow: 3px 3px #00ffff, 6px 6px #ff00ff;
+  animation: blink 1.5s infinite;
+  border: 5px dotted #0000ff;
+  padding: 15px;
+  background: #ffff00;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.7; }
+}
+
+marquee {
+  background: #000000;
+  color: #00ff00;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
+  border: 3px solid #00ff00;
+  margin: 20px 0;
+}
+
+.button-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.btn-insert {
+  background: linear-gradient(45deg, #ff00ff, #ff0000);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: 5px outset #ffffff;
+  cursor: pointer;
+  box-shadow: 5px 5px 0px #000000;
+  font-family: 'Comic Sans MS', cursive;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.btn-insert:hover {
+  background: linear-gradient(45deg, #ff0000, #ff00ff);
+  transform: scale(1.1);
+}
+
+.btn-insert:active {
+  border-style: inset;
+  transform: translateY(3px);
+}
+
+.exercise-card {
+  background: linear-gradient(135deg, #ffff00 0%, #00ffff 100%);
+  border: 5px ridge #ff00ff;
+  margin: 20px 0;
+  padding: 20px;
+  box-shadow: 8px 8px 0px #000000;
+  position: relative;
+}
+
+.exercise-card::before {
+  content: '🌟';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.exercise-card h2 {
+  color: #0000ff;
+  font-size: 24px;
+  text-shadow: 2px 2px #ffffff;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+
+.exercise-card p {
+  color: #000000;
+  font-size: 16px;
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.exercise-card strong {
+  color: #ff0000;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-edit,
+.btn-delete {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 4px outset #ffffff;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px #000000;
+  transition: all 0.2s;
+}
+
+.btn-edit {
+  background: #00ff00;
+  color: #000000;
+}
+
+.btn-edit:hover {
+  background: #00cc00;
+  transform: scale(1.1);
+}
+
+.btn-delete {
+  background: #ff0000;
+  color: #ffffff;
+}
+
+.btn-delete:hover {
+  background: #cc0000;
+  transform: scale(1.1);
+}
+
+.btn-edit:active,
+.btn-delete:active {
+  border-style: inset;
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000000;
+}
