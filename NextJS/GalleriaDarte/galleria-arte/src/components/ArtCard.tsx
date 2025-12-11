@@ -1,4 +1,4 @@
-"use client"; // Indica che il componente funziona nel browser
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -14,7 +14,7 @@ export default function ArtCard({ artwork }: ArtCardProps) {
   const [price, setPrice] = useState(artwork.price);
 
   useEffect(() => {
-    if (typeof window !== "undefined") { // Evita errori lato server
+    if (typeof window !== "undefined") {
       const savedPrice = localStorage.getItem(`price_${artwork.id}`);
       if (savedPrice) {
         setPrice(parseFloat(savedPrice));
@@ -34,13 +34,13 @@ export default function ArtCard({ artwork }: ArtCardProps) {
 
         {/* Pulsante per aggiungere/rimuovere preferiti */}
         <button
-          className={`favorite-button ${isFavorite(artwork.id) ? "favorite" : ""}`}
+          className={`favorite-button ${isFavorite(artwork) ? "favorite" : ""}`}
           onClick={(e) => {
             e.preventDefault();
-            toggleFavorite(artwork.id);
+            toggleFavorite(artwork);
           }}
         >
-          {isFavorite(artwork.id) ? "❤️" : "🤍"}
+          {isFavorite(artwork) ? "❤️" : "🤍"}
         </button>
       </div>
     </Link>

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import HeroMessage from "../components/HeroMessage";
 import "./globals.css";
 
 export default function Home() {
@@ -77,9 +76,7 @@ export default function Home() {
       </Head>
       <div className="app">
         {showWelcome ? (
-          <div className="hero-wrapper">
-            <HeroMessage message="Benvenuto nel mio progetto Next.js!" />
-          </div>
+          <div className="hero-wrapper"></div>
         ) : (
           people.map((person, index) => (
             <Header
