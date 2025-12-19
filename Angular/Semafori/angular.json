@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Test": {
+    "fusion-angular-tailwind-starter": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Test:build:production"
+              "buildTarget": "fusion-angular-tailwind-starter:build:production"
             },
             "development": {
-              "buildTarget": "Test:build:development"
+              "buildTarget": "fusion-angular-tailwind-starter:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,6 +90,6 @@
     }
   },
   "cli": {
-    "analytics": "afdea1a6-f071-4ccb-8226-0dfbb52a5df0"
+    "analytics": false
   }
 }

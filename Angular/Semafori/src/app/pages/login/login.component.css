@@ -1,0 +1,226 @@
+/* Login Component Styles */
+.login-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, var(--green-500), var(--green-400), var(--emerald-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    /* px-4 */
+}
+
+.login-container {
+    width: 100%;
+    max-width: 28rem;
+    /* max-w-md */
+}
+
+.login-card {
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+}
+
+/* Header */
+.card-header {
+    background: linear-gradient(to right, var(--green-600), var(--emerald-600));
+    padding: 2rem 1.5rem;
+    /* px-6 py-8 */
+    text-align: center;
+}
+
+.header-icon {
+    font-size: 3rem;
+    /* text-5xl inverted approx */
+    margin-bottom: 1rem;
+    /* mb-4 */
+}
+
+.header-title {
+    font-size: 1.875rem;
+    /* text-3xl */
+    font-weight: 700;
+    /* font-bold */
+    color: var(--white);
+    margin: 0;
+}
+
+.header-subtitle {
+    color: var(--green-100);
+    margin-top: 0.5rem;
+    /* mt-2 */
+    margin-bottom: 0;
+}
+
+/* Body */
+.card-body {
+    padding: 2rem;
+    /* p-8 */
+}
+
+.body-title {
+    font-size: 1.5rem;
+    /* text-2xl */
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+    margin-top: 0;
+}
+
+.body-subtitle {
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    /* space-y-4 handler */
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    /* text-sm */
+    font-weight: 500;
+    /* font-medium */
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-duration: 0.15s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--green-500);
+    /* ring-2 */
+}
+
+.form-hint {
+    font-size: 0.75rem;
+    /* text-xs */
+    color: var(--gray-500);
+    margin-top: 0.25rem;
+    /* mt-1 */
+    margin-bottom: 0;
+}
+
+/* Error */
+.error-box {
+    padding: 0.75rem;
+    /* p-3 */
+    background-color: var(--red-50);
+    border: 1px solid var(--red-200);
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    margin-top: 1rem;
+}
+
+.error-text {
+    font-size: 0.875rem;
+    /* text-sm */
+    color: var(--red-700);
+    margin: 0;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-input {
+    width: 1rem;
+    /* w-4 */
+    height: 1rem;
+    /* h-4 */
+    cursor: pointer;
+}
+
+.checkbox-label {
+    margin-left: 0.5rem;
+    /* ml-2 */
+    font-size: 0.875rem;
+    /* text-sm */
+    color: var(--gray-600);
+    cursor: pointer;
+}
+
+/* Button */
+.btn-submit {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    /* py-2 px-4 */
+    background: linear-gradient(to right, var(--green-600), var(--emerald-600));
+    color: var(--white);
+    font-weight: 700;
+    /* font-bold */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    transition: all 0.2s;
+}
+
+.btn-submit:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Demo Box */
+.demo-box {
+    margin-top: 1.5rem;
+    /* mt-6 */
+    padding: 1rem;
+    /* p-4 */
+    background-color: var(--blue-50);
+    border: 1px solid var(--blue-200);
+    border-radius: 0.5rem;
+    /* rounded-lg */
+}
+
+.demo-title {
+    font-size: 0.875rem;
+    /* text-sm */
+    color: var(--blue-900);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+    margin-top: 0;
+}
+
+.demo-text {
+    font-size: 0.75rem;
+    /* text-xs */
+    color: var(--blue-800);
+    margin: 0;
+}
+
+/* Footer */
+.footer-text {
+    text-align: center;
+    color: var(--white);
+    margin-top: 1.5rem;
+    /* mt-6 */
+    font-size: 0.875rem;
+    /* text-sm */
+}
