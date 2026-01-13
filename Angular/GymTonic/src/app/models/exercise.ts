@@ -1,9 +1,19 @@
 export interface Exercise {
-  id: number;
+  id: string | number;
   name: string;
-  muscleGroup: string; // per ora semplice stringa: 'petto', 'schiena', ecc.
+  muscleGroup: string;
   sets: number;
   reps: number;
   weightKg?: number;
   notes?: string;
+  mediaUrl?: string; // Image URL or YouTube ID
+  instructions?: string;
+  isPreset?: boolean; // To distinguish system presets from user custom
+}
+
+export interface SessionTemplate {
+  id: string; // UUID
+  name: string;
+  description?: string;
+  exerciseIds: (string | number)[]; // Ordered list of exercise IDs
 }

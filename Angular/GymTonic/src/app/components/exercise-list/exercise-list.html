@@ -1,0 +1,65 @@
+<div class="exercise-header">
+    <h1>Exercises Library</h1>
+</div>
+
+<!-- Create Custom Exercise Form -->
+<!-- Create Custom Exercise Form -->
+<div class="create-exercise-panel">
+    <h3><span class="material-icons">add_circle_outline</span> New Custom Exercise</h3>
+
+    <div class="panel-grid">
+        <div class="input-group">
+            <label>EXERCISE NAME</label>
+            <input type="text" [(ngModel)]="newExercise.name" placeholder="E.g. Bench Press" class="form-input" />
+        </div>
+        <div class="input-group">
+            <label>TARGET MUSCLE</label>
+            <select [(ngModel)]="newExercise.muscleGroup" class="form-select">
+                <option value="Chest">Chest</option>
+                <option value="Back">Back</option>
+                <option value="Legs">Legs</option>
+                <option value="Shoulders">Shoulders</option>
+                <option value="Biceps">Biceps</option>
+                <option value="Triceps">Triceps</option>
+                <option value="Abs">Abs</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="input-group">
+            <label>SETS</label>
+            <input type="number" [(ngModel)]="newExercise.sets" placeholder="3" class="form-input" />
+        </div>
+        <div class="input-group">
+            <label>REPS</label>
+            <input type="number" [(ngModel)]="newExercise.reps" placeholder="10" class="form-input" />
+        </div>
+        <div class="input-group">
+            <label>WEIGHT (KG)</label>
+            <input type="number" [(ngModel)]="newExercise.weightKg" placeholder="0" class="form-input" />
+        </div>
+        <button (click)="createExercise()" class="btn-primary">
+            <span class="material-icons">save</span> SAVE EXERCISE
+        </button>
+    </div>
+</div>
+
+<div class="grid">
+    @for (ex of exercises(); track ex.id) {
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ ex.name }}</h3>
+            <button class="btn-icon" (click)="deleteExercise(ex.id)">
+                <span class="material-icons">delete</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="tag">{{ ex.muscleGroup }}</div>
+            <p class="summary">Default: {{ex.sets}} x {{ex.reps}} @if(ex.weightKg){ @ {{ex.weightKg}}kg }</p>
+        </div>
+    </div>
+    }
+</div>

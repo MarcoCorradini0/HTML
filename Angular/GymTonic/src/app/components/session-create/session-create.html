@@ -1,0 +1,146 @@
+<div class="session-container">
+
+    <!-- SETUP PHASE -->
+    @if(sessionState === 'SETUP') {
+    <div class="setup-view">
+        <h2>Plan Workout</h2>
+        <div class="meta-form">
+            <input type="text" [(ngModel)]="sessionName" placeholder="Workout Name">
+            <input type="date" [(ngModel)]="sessionDate">
+        </div>
+
+        <div class="ex-selector">
+            <select [(ngModel)]="selectedExerciseId">
+                <option [ngValue]="null">Select Exercise...</option>
+                @for(ex of exercises(); track ex.id) {
+                <option [ngValue]="ex.id">{{ex.name}}</option>
+                }
+            </select>
+            <button class="btn-add" (click)="addExercise()">
+                <span class="material-icons">add</span>
+            </button>
+        </div>
+
+        <div class="workout-stream">
+            @for(ex of activeExercises(); track $index) {
+            <div class="setup-card">
+                <span>{{ex.name}} ({{ex.exercisesSets.length}} sets)</span>
+                <button class="btn-icon" (click)="removeExercise($index)"><span
+                        class="material-icons">close</span></button>
+            </div>
+            }
+        </div>
+
+        <button class="btn-big-action" (click)="startWorkout()">START WORKOUT</button>
+    </div>
+    }
+
+    <!-- ACTIVE SESSION MODE -->
+    <div *ngIf="sessionState === 'ACTIVE'" class="active-session-container">
+        <!-- Header -->
+        <div class="active-header">
+            <h2>{{currentExercise.name}}</h2>
+            <div class="set-indicator">
+                SET {{currentSetIndex + 1}} / {{currentExercise.exercisesSets.length}}
+            </div>
+        </div>
+
+        <!-- Timer / Visuals -->
+        <div class="timer-display" [class.resting]="exerciseState === 'RESTING'">
+            <div class="time-value">
+                {{ exerciseState === 'RESTING' ? formatTime(restTimerSeconds) : formatTime(workTimerSeconds) }}
+            </div>
+            <div class="time-label">
+                {{ exerciseState === 'RESTING' ? 'RESTING' : 'WORK TIME' }}
+            </div>
+        </div>
+
+        <!-- Set Controls -->
+        <div class="control-panel">
+            <!-- CURRENT SET INPUTS -->
+            <div class="set-inputs" *ngIf="currentExercise.exercisesSets[currentSetIndex] as set">
+                <div class="input-group">
+                    <label>WEIGHT (KG)</label>
+                    <input type="number" [(ngModel)]="set.weightKg" class="input-big" placeholder="0">
+                </div>
+                <div class="input-group">
+                    <label>REPS</label>
+                    <input type="number" [(ngModel)]="set.reps" class="input-big" placeholder="0">
+                </div>
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="action-buttons">
+                <button *ngIf="exerciseState === 'IDLE'" (click)="startSet()" class="btn-giant start">
+                    START SET
+                </button>
+
+                <button *ngIf="exerciseState === 'WORKING'" (click)="finishSet()" class="btn-giant stop">
+                    FINISH SET
+                </button>
+
+                <div *ngIf="exerciseState === 'RESTING'" class="rest-controls">
+                    <button (click)="skipRest()" class="btn-primary">
+                        NEXT SET
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercise Complete Feedback (Overlay if needed, or inline if last set done) -->
+        <!-- Exercise Complete Feedback -->
+        <div *ngIf="exerciseState === 'FEEDBACK'" class="exercise-feedback">
+            <h3>Exercise Complete!</h3>
+            <div class="rating">
+                <p>Rate Effort:</p>
+                <div class="stars">
+                    @for(star of [1,2,3,4,5]; track star) {
+                    <span class="material-icons star"
+                        [class.filled]="currentExercise.userRating && currentExercise.userRating >= star"
+                        (click)="rateExercise(star)">star</span>
+                    }
+                </div>
+                <button class="btn-big-next" (click)="confirmExerciseCompletion()">
+                    NEXT / FINISH <span class="material-icons">skip_next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SUMMARY PHASE -->
+    @if(sessionState === 'SUMMARY') {
+    <div class="summary-view">
+        <h2>Workout Complete! 🎉</h2>
+        <p class="summary-subtitle">Great job on <strong>{{sessionName}}</strong></p>
+
+        <div class="summary-stats">
+            <div class="stat-card">
+                <span class="label">Exercises</span>
+                <span class="value">{{activeExercises().length}}</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Duration</span>
+                <span class="value">{{sessionDuration}}</span>
+            </div>
+        </div>
+
+        <div class="summary-list">
+            <h3>Performance</h3>
+            @for(ex of activeExercises(); track ex.exerciseId) {
+            <div class="summary-item">
+                <span class="name">{{ex.name}}</span>
+                <span class="sets">{{ex.exercisesSets.length}} Sets</span>
+                <div class="rating-mini">
+                    @for(star of [1,2,3,4,5]; track star) {
+                    <span class="material-icons tiny-star" [class.filled]="(ex.userRating || 0) >= star">star</span>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+
+        <button class="btn-big-action" routerLink="/session/history">VIEW HISTORY</button>
+    </div>
+    }
+</div>

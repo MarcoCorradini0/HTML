@@ -1,0 +1,33 @@
+<h2>Progress Tracker</h2>
+
+<div class="filter-box">
+    <label>Select Exercise to Track:</label>
+    <select [(ngModel)]="selectedExerciseId">
+        <option [ngValue]="null">-- Choose Exercise --</option>
+        @for(ex of exercises(); track ex.id) {
+        <option [ngValue]="ex.id">{{ex.name}}</option>
+        }
+    </select>
+</div>
+
+@if(selectedExerciseId && progressData().length === 0) {
+<div class="info-msg">No history found for this exercise.</div>
+}
+
+<div class="records-list">
+    @for(record of progressData(); track $index) {
+    <div class="record-card">
+        <div class="record-date">{{ record!.date | date:'mediumDate' }}</div>
+        <div class="record-stats">
+            <div class="stat-item">
+                <span class="label">Best Set</span>
+                <span class="value highlight">{{ record!.bestSet }}</span>
+            </div>
+            <div class="stat-item">
+                <span class="label">Total Reps</span>
+                <span class="value">{{ record!.totalReps }}</span>
+            </div>
+        </div>
+    </div>
+    }
+</div>

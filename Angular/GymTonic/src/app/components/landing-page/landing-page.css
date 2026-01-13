@@ -1,0 +1,308 @@
+/* Landing Container - Fits remaining space in main-content */
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 0px;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, #1a2a2a, var(--bg-dark));
+}
+
+.hero {
+    flex: 3;
+    /* Allows hero to take dominant space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 800px;
+    animation: fadeInPage 0.8s ease-out;
+}
+
+h1 {
+    font-size: 5rem;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: -2px;
+}
+
+.highlight {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--primary);
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: var(--primary);
+    color: #000;
+    font-weight: 900;
+    padding: 1.2rem 4rem;
+    border-radius: 5px;
+    /* Boxier, more tech */
+    text-decoration: none;
+    font-size: 1.3rem;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px var(--primary-glow);
+    text-transform: uppercase;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 50px var(--primary-glow);
+    background: #fff;
+}
+
+/* Features Strip - Compact */
+.features {
+    flex: 1;
+    /* Less space than hero */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-card {
+    background: transparent;
+    padding: 0;
+    text-align: center;
+    border: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-card:hover {
+    opacity: 1;
+    transform: none;
+}
+
+.icon-lg {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px var(--primary-glow);
+}
+
+.feature-card h3 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.feature-card p {
+    display: none;
+    /* Hide description to keep it compact/non-scrollable */
+}
+
+.landing-footer {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+/* Visuals */
+.hex-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vh;
+    /* Responsive based on height */
+    height: 60vh;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+    border: 1px solid rgba(0, 255, 136, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse 6s infinite ease-in-out;
+    z-index: 0;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.1;
+    }
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .features {
+        display: none;
+        /* Hide features on mobile if space is tight? Or keep concise */
+    }
+
+    /* Let's keep features but maybe scroll if needed? No, user asked for non-scrollable. 
+       On mobile 100vh is tight. We hide features to focus on CTA */
+}
+
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.highlight {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--primary);
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.btn-cta {
+    display: inline-block;
+    background: var(--primary);
+    color: #000;
+    font-weight: 900;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.btn-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px var(--primary-glow);
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    height: 30vh;
+    align-content: center;
+}
+
+.feature-card {
+    background: var(--bg-surface);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border-top: 3px solid var(--secondary);
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.icon-lg {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.hex-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+    border: 2px solid rgba(0, 255, 136, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+}

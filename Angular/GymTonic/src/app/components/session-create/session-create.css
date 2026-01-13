@@ -1,0 +1,415 @@
+.session-container {
+    padding-bottom: 80px;
+    min-height: 80vh;
+}
+
+/* Setup Styles */
+.meta-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.meta-form input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--bg-elevated);
+    background: var(--bg-surface);
+    color: white;
+}
+
+.ex-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.ex-selector select {
+    flex: 1;
+    padding: 10px;
+}
+
+.setup-card {
+    background: var(--bg-surface);
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Player Styles */
+.player-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.player-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.step-counter {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.player-header h3 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    color: var(--primary);
+}
+
+.timer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg-surface);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-family: monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 1px solid var(--bg-elevated);
+}
+
+.timer-badge.active {
+    border-color: var(--primary);
+    color: var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.media-area {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ACTIVE SESSION STYLES */
+.active-session-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    text-align: center;
+}
+
+.active-header h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.set-indicator {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+}
+
+.timer-display {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.timer-display.resting .time-value {
+    color: var(--secondary);
+    /* Green for rest? or maybe Blue/Orange for rest, Green for work */
+}
+
+/* Let's say Primary is Green (Work), Secondary is Blue/Orange (Rest) 
+   Actually variable --secondary usually exists. 
+*/
+
+.time-value {
+    font-size: 6rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-top: 1rem;
+}
+
+.control-panel {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 20px 20px 0 0;
+}
+
+.set-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.input-big {
+    width: 100px;
+    height: 60px;
+    font-size: 2rem;
+    text-align: center;
+    background: transparent;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.input-big:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.btn-giant {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+}
+
+.btn-giant:active {
+    transform: scale(0.95);
+}
+
+.btn-giant.start {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 30px var(--primary-glow);
+}
+
+.btn-giant.stop {
+    background: var(--destructive);
+    /* Assuming red/destructive var exists, else #ff4444 */
+    color: #000;
+    background-color: #ff4444;
+}
+
+.exercise-feedback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--bg-surface);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 2px solid var(--primary);
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    width: 90%;
+    max-width: 400px;
+}
+
+.rating .stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+}
+
+.rating .star {
+    font-size: 3rem;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating .star.active,
+.rating .star:hover {
+    color: gold;
+}
+
+.player-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.no-media {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+}
+
+.instructions {
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #ddd;
+    background: rgba(0, 0, 0, 0.7);
+    margin: 0;
+}
+
+.sets-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 2rem;
+}
+
+.check-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-surface);
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.check-row.done {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: var(--primary);
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--text-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.check-row.done .checkbox {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #000;
+}
+
+/* Controls */
+.player-controls {
+    margin-top: auto;
+    text-align: center;
+}
+
+.btn-big-action,
+.btn-big-play,
+.btn-big-stop,
+.btn-big-next {
+    width: 100%;
+    padding: 1.2rem;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.btn-big-action {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-big-play {
+    background: var(--primary);
+    color: black;
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.btn-big-stop {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-big-next {
+    background: var(--accent-gold);
+    color: black;
+}
+
+.rating-panel {
+    background: var(--bg-elevated);
+    padding: 1rem;
+    border-radius: 12px;
+    animation: slideUp 0.3s;
+}
+
+.rating-panel p {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 1rem 0;
+}
+
+.star {
+    font-size: 2.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star.filled {
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

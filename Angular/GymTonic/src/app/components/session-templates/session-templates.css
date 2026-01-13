@@ -1,0 +1,110 @@
+.templates-container {
+    padding-bottom: 80px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.creation-form {
+    background: var(--bg-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--primary);
+    animation: slideIn 0.3s;
+}
+
+.creation-form input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+.ex-list-select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+}
+
+.ex-option {
+    padding: 10px;
+    background: var(--bg-elevated);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid transparent;
+}
+
+.ex-option.selected {
+    border-color: var(--secondary);
+    background: rgba(0, 184, 255, 0.1);
+}
+
+.ex-option.selected .material-icons {
+    color: var(--secondary);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.template-card {
+    background: var(--bg-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--bg-elevated);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.t-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.t-header h3 {
+    margin: 0;
+    color: var(--text-main);
+}
+
+.t-desc {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.btn-start {
+    background: var(--primary);
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 800;
+    margin-top: auto;
+    letter-spacing: 1px;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 10px 20px;
+    border-radius: 30px;
+}

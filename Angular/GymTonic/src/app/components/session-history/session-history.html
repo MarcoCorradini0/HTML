@@ -1,0 +1,43 @@
+<h2>Workout History</h2>
+
+<div class="history-list">
+    @if(sessions().length === 0) {
+    <div class="empty-state">
+        <span class="material-icons">history</span>
+        <p>No workouts logged yet. Go start one!</p>
+    </div>
+    }
+
+    @for(session of sessions(); track session.id) {
+    <div class="history-card" [class.expanded]="expandedSessionId === session.id">
+        <div class="history-header" (click)="toggleDetails(session.id)">
+            <div class="date-info">
+                <span class="day">{{ session.date | date:'dd' }}</span>
+                <div class="meta">
+                    <span class="month">{{ session.date | date:'MMM yyyy' }}</span>
+                    <span class="name">{{ session.name }}</span>
+                </div>
+            </div>
+            <div class="stats">
+                <span>{{ session.exercises.length }} Exercises</span>
+                <span class="chevron material-icons">expand_more</span>
+            </div>
+        </div>
+
+        @if(expandedSessionId === session.id) {
+        <div class="history-details">
+            @for(ex of session.exercises; track $index) {
+            <div class="ex-row">
+                <h4>{{ ex.name }}</h4>
+                <div class="sets-pill">
+                    @for(set of ex.exercisesSets; track $index) {
+                    <span>{{set.weightKg}}kg x {{set.reps}}</span>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+    }
+</div>

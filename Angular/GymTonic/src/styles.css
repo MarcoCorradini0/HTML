@@ -1,1 +1,149 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+:root {
+  --primary: #00ff88;
+  /* Neon Green */
+  --primary-glow: rgba(0, 255, 136, 0.4);
+  --secondary: #00b8ff;
+  /* Neon Blue */
+  --bg-dark: #0a0a0a;
+  --bg-surface: rgba(30, 30, 30, 0.8);
+  --bg-elevated: #2a2a2a;
+  --text-main: #ffffff;
+  --text-muted: #b3b3b3;
+  --danger: #ff4444;
+  --accent-gold: #ffd700;
+  --font-main: 'Inter', sans-serif;
+  --spacing-md: 1rem;
+  --radius-md: 12px;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  margin: 0;
+  margin: 0;
+  /* padding-bottom moved to main-content to avoid global scroll on fixed pages */
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+/* Dynamic CSS Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background:
+    linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Hexagon Overlay Pattern */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-image:
+    radial-gradient(var(--bg-elevated) 15%, transparent 16%),
+    radial-gradient(var(--bg-elevated) 15%, transparent 16%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.1;
+  animation: floatTexture 60s linear infinite;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatTexture {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-500px);
+  }
+}
+
+/* Ensure readability over texture */
+.app-container {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-main);
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Form Elements Polish */
+input,
+select,
+textarea {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

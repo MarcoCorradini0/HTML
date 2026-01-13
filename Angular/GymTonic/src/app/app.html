@@ -1,36 +1,39 @@
-<main class="main">
-  <div class="content">
-    <h1>💪 PALESTRA ONLINE - Elenco Esercizi 💪</h1>
-    <marquee behavior="scroll" direction="left">🏋️ Benvenuto nel tuo programma di allenamento! 🏋️</marquee>
-    
-    <div class="button-container">
-      <button class="btn-insert" (click)="insertExercise()">
-        ➕ INSERISCI NUOVO ESERCIZIO
-      </button>
+<div class="app-container">
+  <header class="main-header">
+    <div class="logo">
+      <span class="material-icons">fitness_center</span>
+      <span>GYM<span class="highlight">TONIC</span></span>
     </div>
+  </header>
 
-    @for (item of exercises; track item.id) {
-    <div class="exercise-card">
-      <h2>⭐ {{ item.name }} ⭐</h2>
-      <p><strong>🎯 Gruppo muscolare:</strong> {{ item.muscleGroup }}</p>
-      <p><strong>📊 Serie:</strong> {{ item.sets }} | <strong>🔢 Ripetizioni:</strong> {{ item.reps }}</p>
-      @if (item.weightKg) {
-      <p><strong>💪 Peso (kg):</strong> {{ item.weightKg }}</p>
-      }
-      @if (item.notes) {
-      <p><strong>📝 Note:</strong> {{ item.notes }}</p>
-      }
-      <div class="button-group">
-        <button class="btn-edit" (click)="editExercise(item.id)">
-          ✏️ MODIFICA
-        </button>
-        <button class="btn-delete" (click)="deleteExercise(item.id)">
-          🗑️ ELIMINA
-        </button>
-      </div>
-    </div>
-    }
-  </div>
-</main>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
 
-<router-outlet />
+  <nav class="bottom-nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+      <span class="material-icons">home</span>
+      <span>Home</span>
+    </a>
+    <a routerLink="/exercises" routerLinkActive="active" class="nav-item">
+      <span class="material-icons">list</span>
+      <span>Exercises</span>
+    </a>
+    <a routerLink="/session/templates" routerLinkActive="active" class="nav-item">
+      <span class="material-icons">folder_special</span>
+      <span>Routines</span>
+    </a>
+    <a routerLink="/session/new" routerLinkActive="active" class="nav-item">
+      <span class="material-icons">add_circle</span>
+      <span>New Session</span>
+    </a>
+    <a routerLink="/session/history" routerLinkActive="active" class="nav-item">
+      <span class="material-icons">history</span>
+      <span>History</span>
+    </a>
+    <a routerLink="/progress" routerLinkActive="active" class="nav-item">
+      <span class="material-icons">show_chart</span>
+      <span>Progress</span>
+    </a>
+  </nav>
+</div>

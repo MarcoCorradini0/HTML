@@ -1,0 +1,55 @@
+<div class="templates-container">
+    <div class="header">
+        <h2>My Routines</h2>
+        @if(!isCreating) {
+        <button class="btn-primary" (click)="startCreating()">
+            <span class="material-icons">add</span> Create New
+        </button>
+        }
+    </div>
+
+    @if(isCreating) {
+    <div class="creation-form">
+        <h3>Design Your Routine</h3>
+        <input type="text" [(ngModel)]="newTemplateName" placeholder="Routine Name (e.g. Back & Biceps)">
+
+        <div class="ex-list-select">
+            <h4>Select Exercises:</h4>
+            @for(ex of exercises(); track ex.id) {
+            <div class="ex-option" [class.selected]="selectedExerciseIds().includes(ex.id)"
+                (click)="toggleExerciseSelection(ex.id)">
+                <span>{{ex.name}}</span>
+                @if(selectedExerciseIds().includes(ex.id)) {
+                <span class="material-icons">check_circle</span>
+                }
+            </div>
+            }
+        </div>
+
+        <div class="form-actions">
+            <button class="btn-secondary" (click)="isCreating = false">Cancel</button>
+            <button class="btn-primary" (click)="saveTemplate()">Save Routine</button>
+        </div>
+    </div>
+    } @else {
+    <div class="templates-grid">
+        @if(templates().length === 0) {
+        <p class="empty-msg">No routines found. Create one to get started!</p>
+        }
+
+        @for(t of templates(); track t.id) {
+        <div class="template-card">
+            <div class="t-header">
+                <h3>{{t.name}}</h3>
+                <button class="btn-icon" (click)="deleteTemplate(t.id)"><span
+                        class="material-icons">delete</span></button>
+            </div>
+            <p class="t-desc">{{t.exerciseIds.length}} Exercises</p>
+            <button class="btn-start" (click)="startSessionFromTemplate(t)">
+                START SESSION
+            </button>
+        </div>
+        }
+    </div>
+    }
+</div>
