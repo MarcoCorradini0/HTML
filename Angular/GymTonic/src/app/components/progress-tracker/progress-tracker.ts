@@ -16,11 +16,11 @@ export class ProgressTracker {
   exercises = this.trainingService.exercises;
   sessions = this.trainingService.sessions;
 
-  selectedExerciseId: number | null = null;
+  selectedExerciseId = signal<number | null>(null);
 
   // Computed signal to get progress data for selected exercise
   progressData = computed(() => {
-    const exId = this.selectedExerciseId;
+    const exId = this.selectedExerciseId();
     if (!exId) return [];
 
     return this.sessions()

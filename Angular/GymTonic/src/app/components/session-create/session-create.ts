@@ -105,7 +105,6 @@ export class SessionCreate {
   }
 
   // --- Active Player Logic ---
-
   get currentExercise() {
     return this.activeExercises()[this.currentExerciseIndex];
   }

@@ -2,7 +2,7 @@
 
 <div class="filter-box">
     <label>Select Exercise to Track:</label>
-    <select [(ngModel)]="selectedExerciseId">
+    <select [ngModel]="selectedExerciseId()" (ngModelChange)="selectedExerciseId.set($event)">
         <option [ngValue]="null">-- Choose Exercise --</option>
         @for(ex of exercises(); track ex.id) {
         <option [ngValue]="ex.id">{{ex.name}}</option>
@@ -10,7 +10,7 @@
     </select>
 </div>
 
-@if(selectedExerciseId && progressData().length === 0) {
+@if(selectedExerciseId() && progressData().length === 0) {
 <div class="info-msg">No history found for this exercise.</div>
 }
 

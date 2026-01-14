@@ -1,0 +1,66 @@
+1. Active Workout Session (Core Feature)
+   -------------------------------------
+   • Functionality: The main "Player" of the app.
+     - Setup Phase: Select date, name, and add exercises to the queue.
+     - Active Phase: Real-time work/rest timers, weight/reps input, "Next Set" flow.
+     - Feedback Phase: Rate exercises (1-5 stars) after completion.
+     - Summary Phase: View workout duration and stats.
+   • Location: src/app/components/session-create/
+     - Logic: session-create.ts
+     - UI: session-create.html
+     - Styles: session-create.css
+
+2. Progress Tracker
+   ----------------
+   • Functionality: Visualization of strength progress.
+     - Select an exercise to view history.
+     - Displays "Best Set", "Max Weight", and "Total Reps" for each past session.
+     - Uses Angular Signals for reactive filtering.
+   • Location: src/app/components/progress-tracker/
+
+3. Landing Page
+   ------------
+   • Functionality: The entry point (Home).
+     - Full-screen aesthetic introduction.
+     - "Enter GymTonic" call-to-action.
+   • Location: src/app/components/landing-page/
+
+4. Session History
+   ---------------
+   • Functionality: A log of all completed workouts stored in the system.
+   • Location: src/app/components/session-history/
+
+5. Exercise List
+   -------------
+   • Functionality: A directory of available exercises.
+   • Location: src/app/components/exercise-list/
+
+6. Data & State Management
+   -----------------------
+   • Functionality: Central service handling data.
+     - Manages default Exercises, User Sessions, and Templates.
+     - Handles LocalStorage persistence.
+   • Location: src/app/services/training.ts
+
+STYLES
+======
+   • Global Styles: src/app/app.css
+     - Contains CSS variables (colors, fonts), utility classes, and global button styles (.btn-primary, .btn-secondary).
+
+TECHNICAL IMPLEMENTATION DETAILS
+================================
+This application uses the following technical strategies:
+
+1. LocalStorage (Persistence)
+   - We use the browser's LocalStorage to save all user data. This means data persists even if you close the browser, but it is local to the device you are using.
+   - Keys used:
+     - 'gymtonic_sessions_v3': Stores completed workout history.
+     - 'gymtonic_templates_v3': Stores workout routines/templates.
+     - 'gymtonic_exercises_v3': Stores custom created exercises.
+
+2. Angular Signals (State Management)
+   - We use Angular's modern "Signals" (signal(), computed()) instead of older techniques (RxJS subjects or simple arrays) for handling application state.
+   - This makes the app highly reactive (e.g., the Progress Tracker updates immediately when you select an exercise without manual refreshes).
+
+3. Hybrid Data Loading
+   - Exercises are loaded from a static JSON file (assets/exercises.json) AND merged with custom exercises from LocalStorage.

@@ -228,6 +228,12 @@
     background-color: #ff4444;
 }
 
+.btn-giant.skip {
+    background: var(--accent-gold);
+    color: #000;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
 .exercise-feedback {
     position: absolute;
     top: 50%;
@@ -347,6 +353,16 @@
     justify-content: center;
     gap: 10px;
     margin-top: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-big-action:active,
+.btn-big-play:active,
+.btn-big-stop:active,
+.btn-big-next:active {
+    transform: scale(0.98);
 }
 
 .btn-big-action {
@@ -400,6 +416,87 @@
 .star.filled {
     color: var(--accent-gold);
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Summary View Styles */
+.summary-view {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.summary-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.summary-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--bg-elevated);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-card .label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.stat-card .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.summary-list {
+    text-align: left;
+    background: var(--bg-surface);
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+.summary-list h3 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--bg-elevated);
+    padding-bottom: 0.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bg-elevated);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item .name {
+    font-weight: bold;
+}
+
+.summary-item .sets {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Tiny stars for summary */
+.tiny-star {
+    font-size: 1rem;
+    color: var(--bg-elevated);
+}
+
+.tiny-star.filled {
+    color: var(--accent-gold);
 }
 
 @keyframes slideUp {

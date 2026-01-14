@@ -88,3 +88,37 @@
 .nav-item.active .material-icons {
   text-shadow: 0 0 10px var(--primary-glow);
 }
+
+/* Global Buttons */
+.btn-primary {
+  background: var(--primary);
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+}
+
+.btn-secondary {
+  background: var(--bg-elevated);
+  color: white;
+  border: 1px solid var(--border-color);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.btn-secondary:active {
+  transform: scale(0.95);
+}

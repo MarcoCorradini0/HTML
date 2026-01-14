@@ -80,7 +80,7 @@
                 </button>
 
                 <div *ngIf="exerciseState === 'RESTING'" class="rest-controls">
-                    <button (click)="skipRest()" class="btn-primary">
+                    <button (click)="skipRest()" class="btn-giant skip">
                         NEXT SET
                     </button>
                 </div>
@@ -127,7 +127,7 @@
 
         <div class="summary-list">
             <h3>Performance</h3>
-            @for(ex of activeExercises(); track ex.exerciseId) {
+            @for(ex of activeExercises(); track $index) {
             <div class="summary-item">
                 <span class="name">{{ex.name}}</span>
                 <span class="sets">{{ex.exercisesSets.length}} Sets</span>
